@@ -1,16 +1,8 @@
 services:
   app:
-    image: oven/bun:latest
-    working_dir: /app
-    volumes:
-      # Mount the project from the host, including node_modules installed with Bun
-      - .:/app
-    # VITE_* vars are read by Vite from the mounted .env / .env.local files.
-    # Do not set them here: compose only substitutes from .env (not .env.local),
-    # and container env vars override Vite's file-based loading.
-    # Dev mode with Bun + Vite, binding to all interfaces.
-    # Assumes you've already run `bun install` on the host.
-    command: sh -c "bun run dev -- --host 0.0.0.0 --port 5173"
+    build:
+      context: .
+      dockerfile: Dockerfile.app
     ports:
       - "5173:5173"
     depends_on:
@@ -48,9 +40,10 @@ services:
     command: sh -c "npm install && node server.js"
     ports:
       - "3132:3132"
-    # USB access for local USB printers
-    devices:
-      - /dev/bus/usb:/dev/bus/usb
+    # USB access for local USB printers (DESHABILITADO EN WINDOWS - usar IP/red)
+    # Para reactivar USB directo, instalar usbipd-win en Windows y descomentar abajo:
+    # devices:
+    #   - /dev/bus/usb:/dev/bus/usb
 
   payment:
     image: node:20-alpine

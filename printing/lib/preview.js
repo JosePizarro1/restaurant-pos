@@ -77,7 +77,7 @@ function renderBillToHtml(bill, config, opts) {
   const cfg = config || {};
   const sym = cfg.currencySymbol || '$';
   const {
-    title = 'Bill',
+    title = 'Cuenta',
     address,
     phone,
     notes,
@@ -100,10 +100,10 @@ function renderBillToHtml(bill, config, opts) {
   if (cfg.showVatNumber && cfg.vatNumber) {
     parts.push(`<div class="center">${escapeHtml(cfg.vatName + ': ' + cfg.vatNumber)}</div>`);
   }
-  parts.push(row(`Invoice# ${bill.orderId || ''}`, bill.date || ''));
+  parts.push(row(`Documento# ${bill.orderId || ''}`, bill.date || ''));
   parts.push(row(bill.table || '', bill.userName || ''));
-  if (address) parts.push(`<div class="row"><span>Address: ${escapeHtml(String(address).slice(0, 40))}</span></div>`);
-  if (phone) parts.push(`<div class="row"><span>Phone: ${escapeHtml(String(phone))}</span></div>`);
+  if (address) parts.push(`<div class="row"><span>Dirección: ${escapeHtml(String(address).slice(0, 40))}</span></div>`);
+  if (phone) parts.push(`<div class="row"><span>Teléfono: ${escapeHtml(String(phone))}</span></div>`);
   parts.push('<hr/>');
 
   // Items
@@ -116,12 +116,12 @@ function renderBillToHtml(bill, config, opts) {
   parts.push('<hr/>');
 
   // Summary
-  parts.push(row(`Items (${bill.itemsCount || 0})`, formatMoney(bill.itemsTotal, sym)));
+  parts.push(row(`Productos (${bill.itemsCount || 0})`, formatMoney(bill.itemsTotal, sym)));
   if (bill.tax != null && Number(bill.tax) !== 0) {
-    parts.push(row(`Tax (${bill.taxLabel || 'Tax'})`, formatMoney(bill.tax, sym)));
+    parts.push(row(`Impuesto (${bill.taxLabel || 'IGV'})`, formatMoney(bill.tax, sym)));
   }
   if (bill.discount && bill.discountAmount != null && Number(bill.discountAmount) !== 0) {
-    parts.push(row('Discount', formatMoney(bill.discountAmount, sym)));
+    parts.push(row('Descuento', formatMoney(bill.discountAmount, sym)));
   }
   if (bill.serviceChargeLabel && bill.serviceChargeAmount != null && Number(bill.serviceChargeAmount) !== 0) {
     parts.push(row(bill.serviceChargeLabel, formatMoney(bill.serviceChargeAmount, sym)));
@@ -130,10 +130,10 @@ function renderBillToHtml(bill, config, opts) {
     parts.push(row(e.name || 'Extra', formatMoney(e.value, sym)));
   });
   if (bill.tipAmount != null && Number(bill.tipAmount) !== 0) {
-    parts.push(row(bill.tipLabel || 'Tip', formatMoney(bill.tipAmount, sym)));
+    parts.push(row(bill.tipLabel || 'Propina', formatMoney(bill.tipAmount, sym)));
   }
   if (showDeliveryLine && bill.deliveryCharges != null && Number(bill.deliveryCharges) !== 0) {
-    parts.push(row('Delivery Charges', formatMoney(bill.deliveryCharges, sym)));
+    parts.push(row('Envío', formatMoney(bill.deliveryCharges, sym)));
   }
   parts.push('<hr/>');
 
@@ -143,17 +143,17 @@ function renderBillToHtml(bill, config, opts) {
   if (showPayments && Array.isArray(bill.payments) && bill.payments.length > 0) {
     parts.push('<hr/>');
     bill.payments.forEach((p) => {
-      parts.push(row(p.method || 'Payment', formatMoney(p.amount, sym)));
+      parts.push(row(p.method || 'Pago', formatMoney(p.amount, sym)));
     });
   }
   if (showChange && bill.change != null && Number(bill.change) !== 0) {
     parts.push('<hr/>');
-    parts.push(`<div class="row bold"><span>Change</span><span>${escapeHtml(formatMoney(bill.change, sym))}</span></div>`);
+    parts.push(`<div class="row bold"><span>Vuelto</span><span>${escapeHtml(formatMoney(bill.change, sym))}</span></div>`);
   }
 
   if (notes) {
     parts.push('<hr/>');
-    parts.push(`<div class="row"><span>Notes: ${escapeHtml(String(notes).slice(0, 48))}</span></div>`);
+    parts.push(`<div class="row"><span>Notas: ${escapeHtml(String(notes).slice(0, 48))}</span></div>`);
   }
   if (thankYou) {
     parts.push(`<div class="center thankyou">${escapeHtml(thankYou)}</div>`);
@@ -195,9 +195,9 @@ function renderSummaryToHtml(data, config) {
   const parts = [];
   const brandingHeader = renderBrandingHeader(cfg);
   if (brandingHeader) parts.push(brandingHeader);
-  parts.push(`<div class="title">Daily sales summary — ${escapeHtml(s.date)}</div>`);
+  parts.push(`<div class="title">Resumen de ventas diarias — ${escapeHtml(s.date)}</div>`);
   parts.push('<hr/>');
-  parts.push(sect('1. Sales revenue'));
+  parts.push(sect('1. Ingresos por ventas'));
   parts.push(row('Exclusive sales', formatMoney(s.exclusiveSales, sym)));
   parts.push(row('Extras', formatMoney(s.totalExtras, sym)));
   parts.push(row('Gross sales', formatMoney(s.grossSales, sym)));

@@ -5,7 +5,7 @@ export interface SupportedLanguage {
 
 export type AppTextDirection = 'ltr' | 'rtl';
 
-export const DEFAULT_LANGUAGE = 'en';
+export const DEFAULT_LANGUAGE = 'es';
 export const DEFAULT_TEXT_DIRECTION: AppTextDirection = 'ltr';
 
 export const SUPPORTED_LANGUAGES: SupportedLanguage[] = [

@@ -33,19 +33,19 @@ function printKotHeader(printer, opts) {
   } = opts || {};
 
   hardResetLayout(printer);
-  printCenteredText(printer, kitchenName || 'KOT', { style: 'bold-underline', size: 'medium' });
+  printCenteredText(printer, kitchenName || 'Comanda', { style: 'bold-underline', size: 'medium' });
   printDivider(printer);
 
   if (bannerLabel) {
     printCenteredText(printer, bannerLabel, { style: 'bold', size: 'medium' });
   }
   if (orderId) {
-    printCenteredText(printer, `Order# ${orderId}`, { style: 'bold', size: 'medium' });
+    printCenteredText(printer, `Pedido# ${orderId}`, { style: 'bold', size: 'medium' });
   }
-  if (table) printFixedLine(printer, `Table: ${table}`, { align: 'left' });
-  if (orderType) printFixedLine(printer, `Order Type: ${orderType}`, { align: 'left' });
-  if (orderTaker) printFixedLine(printer, `Order Taker: ${orderTaker}`, { align: 'left' });
-  printFixedLine(printer, `Time: ${createdAt}`, { align: 'left' });
+  if (table) printFixedLine(printer, `Mesa: ${table}`, { align: 'left' });
+  if (orderType) printFixedLine(printer, `Tipo Pedido: ${orderType}`, { align: 'left' });
+  if (orderTaker) printFixedLine(printer, `Tomado por: ${orderTaker}`, { align: 'left' });
+  printFixedLine(printer, `Hora: ${createdAt}`, { align: 'left' });
 
   extraLines.forEach((line) => {
     if (line && line.value) {
