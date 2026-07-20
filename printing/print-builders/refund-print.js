@@ -29,11 +29,11 @@ function build(printer, data = {}, config = {}) {
 
   return printReceiptHeader(printer, cfg).then(() => {
     // --- REFUND RECEIPT header ---
-    printer.align('ct').style('bu').text('REFUND RECEIPT').style('normal');
-    printLineLeftRight(printer, `Original Invoice# ${bill.originalOrderId || ''}`, '');
-    printLineLeftRight(printer, `Table: ${bill.table || '-'}`, `Order Type: ${bill.orderType || '-'}`);
-    printLineLeftRight(printer, `Cashier: ${bill.userName || '-'}`, '');
-    printLineLeftRight(printer, `Refund Date: ${bill.refundDate || ''}`, '');
+    printer.align('ct').style('bu').text('RECIBO DE REEMBOLSO').style('normal');
+    printLineLeftRight(printer, `Factura/Boleta Orig.# ${bill.originalOrderId || ''}`, '');
+    printLineLeftRight(printer, `Mesa: ${bill.table || '-'}`, `Tipo Pedido: ${bill.orderType || '-'}`);
+    printLineLeftRight(printer, `Cajero: ${bill.userName || '-'}`, '');
+    printLineLeftRight(printer, `Fecha Reembolso: ${bill.refundDate || ''}`, '');
     printer.drawLine();
 
     // --- Items ---
@@ -46,12 +46,12 @@ function build(printer, data = {}, config = {}) {
     printer.drawLine();
 
     // --- Summary: Items(n), Tax, Discount, Service, extras, Tip ---
-    printLineLeftRight(printer, `Items (${bill.itemsCount || 0})`, formatMoney(bill.itemsTotal, cfg.currencySymbol || '$'));
+    printLineLeftRight(printer, `Productos (${bill.itemsCount || 0})`, formatMoney(bill.itemsTotal, cfg.currencySymbol || '$'));
     if (bill.tax != null && Number(bill.tax) !== 0) {
-      printLineLeftRight(printer, `Tax (${bill.taxLabel || 'Tax'})`, formatMoney(bill.tax, cfg.currencySymbol || '$'));
+      printLineLeftRight(printer, `Impuesto (${bill.taxLabel || 'Impuesto'})`, formatMoney(bill.tax, cfg.currencySymbol || '$'));
     }
     if (bill.discount && bill.discountAmount != null && Number(bill.discountAmount) !== 0) {
-      printLineLeftRight(printer, 'Discount', formatMoney(bill.discountAmount, cfg.currencySymbol || '$'));
+      printLineLeftRight(printer, 'Descuento', formatMoney(bill.discountAmount, cfg.currencySymbol || '$'));
     }
     if (bill.serviceChargeLabel && bill.serviceChargeAmount != null && Number(bill.serviceChargeAmount) !== 0) {
       printLineLeftRight(printer, bill.serviceChargeLabel, formatMoney(bill.serviceChargeAmount, cfg.currencySymbol || '$'));
@@ -60,13 +60,13 @@ function build(printer, data = {}, config = {}) {
       printLineLeftRight(printer, e.name || 'Extra', formatMoney(e.value, cfg.currencySymbol || '$'));
     });
     if (bill.tipAmount != null && Number(bill.tipAmount) !== 0) {
-      printLineLeftRight(printer, bill.tipLabel || 'Tip', formatMoney(bill.tipAmount, cfg.currencySymbol || '$'));
+      printLineLeftRight(printer, bill.tipLabel || 'Propina', formatMoney(bill.tipAmount, cfg.currencySymbol || '$'));
     }
     printer.drawLine();
 
     // --- Refund Total (bold) ---
     printer.style('bu');
-    printLineLeftRight(printer, 'Refund Total', formatMoney(bill.total, cfg.currencySymbol || '$'));
+    printLineLeftRight(printer, 'Total Reembolso', formatMoney(bill.total, cfg.currencySymbol || '$'));
     printer.style('normal');
 
     printVatLine(printer, cfg);

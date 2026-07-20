@@ -36,9 +36,9 @@ function printMixRow(printer, left, qty, total, share, sym, options = {}) {
 }
 
 function printProductMix(printer, categoryMix, exclusiveSales, sym) {
-  printLineLeftRight(printer, 'Item', 'Qty   Total   %');
+  printLineLeftRight(printer, 'Ítem', 'Cant   Total   %');
   if (!categoryMix || categoryMix.length === 0) {
-    printer.text('No category data for this date.');
+    printer.text('No hay datos de categoría para esta fecha.');
     return;
   }
 
@@ -82,7 +82,7 @@ function printProductMix(printer, categoryMix, exclusiveSales, sym) {
 function printPaymentTypes(printer, paymentTypes, amountDue, sym, line) {
   const rows = (paymentTypes || []).filter((payment) => safeNumber(payment.total) > 0);
   if (rows.length === 0) {
-    printer.text('No payment data for this date.');
+    printer.text('No hay datos de pago para esta fecha.');
     return;
   }
   rows.forEach((payment) => {
@@ -101,54 +101,54 @@ function printDailySalesSummary(printer, data, cfg) {
   const s = computeSummary(data);
   const line = (left, right) => printLineLeftRight(printer, left, right);
 
-  printer.align('ct').style('bu').text(`Daily sales summary - ${s.date}`).style('normal');
+  printer.align('ct').style('bu').text(`Resumen de ventas diarias - ${s.date}`).style('normal');
   printer.align('lt');
   printer.drawLine();
 
-  sect(printer, '1. Sales revenue');
-  line('Exclusive sales', formatMoney(s.exclusiveSales, sym));
+  sect(printer, '1. Ingresos por ventas');
+  line('Ventas exclusivas', formatMoney(s.exclusiveSales, sym));
   line('Extras', formatMoney(s.totalExtras, sym));
-  line('Gross sales', formatMoney(s.grossSales, sym));
-  line('Item discounts', formatMoney(s.itemDiscounts, sym));
-  line('Subtotal discounts', formatMoney(s.subtotalDiscounts, sym));
-  line('Coupon discounts', formatMoney(s.couponDiscounts, sym));
-  line('(-) Discounts', formatMoney(s.discounts, sym));
-  line('Net sales', formatMoney(s.netSales, sym));
+  line('Ventas brutas', formatMoney(s.grossSales, sym));
+  line('Descuentos por ítem', formatMoney(s.itemDiscounts, sym));
+  line('Descuentos de subtotal', formatMoney(s.subtotalDiscounts, sym));
+  line('Descuentos por cupón', formatMoney(s.couponDiscounts, sym));
+  line('(-) Descuentos', formatMoney(s.discounts, sym));
+  line('Ventas netas', formatMoney(s.netSales, sym));
 
-  sect(printer, '2. Surcharges and taxes');
-  line('Service charges', formatMoney(s.serviceCharges, sym));
-  line('Taxes', formatMoney(s.taxCollected, sym));
+  sect(printer, '2. Recargos e impuestos');
+  line('Cargos por servicio', formatMoney(s.serviceCharges, sym));
+  line('Impuestos', formatMoney(s.taxCollected, sym));
   printer.style('bu');
-  line('Total revenue', formatMoney(s.totalRevenue, sym));
+  line('Ingresos totales', formatMoney(s.totalRevenue, sym));
   printer.style('normal');
 
-  sect(printer, '3. Settlement and cashier');
-  line('Amount due (before tips)', formatMoney(s.amountDue, sym));
-  line('Tips', formatMoney(s.tips, sym));
+  sect(printer, '3. Liquidación y cajero');
+  line('Monto a pagar (sin propinas)', formatMoney(s.amountDue, sym));
+  line('Propinas', formatMoney(s.tips, sym));
   printer.style('bu');
-  line('Grand total (due)', formatMoney(s.grandTotalDue, sym));
+  line('Total general (a pagar)', formatMoney(s.grandTotalDue, sym));
   printer.style('normal');
-  line('Amount collected', formatMoney(s.amountCollected, sym));
-  line('Rounding', formatMoney(s.rounding, sym));
-  line('Change / variance', formatMoney(s.changeGiven, sym));
+  line('Monto cobrado', formatMoney(s.amountCollected, sym));
+  line('Redondeo', formatMoney(s.rounding, sym));
+  line('Vuelto / diferencia', formatMoney(s.changeGiven, sym));
 
-  sect(printer, '4. Operational controls');
-  line('Voids', formatMoney(s.voids, sym));
-  line('Refunds', formatMoney(s.refunds, sym));
-  line('Covers', formatNum(s.covers));
-  line('Average cover', formatMoney(s.averageCover, sym));
-  line('Orders / checks', formatNum(s.ordersCount));
-  line('Average order / check', formatMoney(s.averageOrderCheck, sym));
+  sect(printer, '4. Controles operacionales');
+  line('Anulaciones', formatMoney(s.voids, sym));
+  line('Reembolsos', formatMoney(s.refunds, sym));
+  line('Cubiertos', formatNum(s.covers));
+  line('Promedio por cubierto', formatMoney(s.averageCover, sym));
+  line('Pedidos / cuentas', formatNum(s.ordersCount));
+  line('Pedido / cuenta promedio', formatMoney(s.averageOrderCheck, sym));
 
-  sect(printer, '5. Product mix');
+  sect(printer, '5. Mix de productos');
   printProductMix(printer, s.categoryMix, s.exclusiveSales, sym);
 
-  sect(printer, '6. Payment types');
+  sect(printer, '6. Tipos de pago');
   printPaymentTypes(printer, s.paymentTypes, s.amountDue, sym, line);
 
-  sect(printer, '7. Taxes breakdown');
+  sect(printer, '7. Desglose de impuestos');
   if (!s.taxesList || s.taxesList.length === 0) {
-    printer.text('No tax rows for this date.');
+    printer.text('No hay filas de impuestos para esta fecha.');
   } else {
     s.taxesList.forEach((tax) => {
       const share = formatNum(pct(tax.total, s.taxCollected)) + '%';
@@ -156,9 +156,9 @@ function printDailySalesSummary(printer, data, cfg) {
     });
   }
 
-  sect(printer, '8. Discounts breakdown');
+  sect(printer, '8. Desglose de descuentos');
   if (!s.discountsList || s.discountsList.length === 0) {
-    printer.text('No discount rows for this date.');
+    printer.text('No hay filas de descuentos para esta fecha.');
   } else {
     s.discountsList.forEach((discount) => {
       const share = formatNum(pct(discount.total, s.discounts)) + '%';
@@ -166,9 +166,9 @@ function printDailySalesSummary(printer, data, cfg) {
     });
   }
 
-  sect(printer, '9. Extras breakdown');
+  sect(printer, '9. Desglose de extras');
   if (!s.extrasList || s.extrasList.length === 0) {
-    printer.text('No extras found for this date.');
+    printer.text('No se encontraron extras para esta fecha.');
   } else {
     s.extrasList.forEach((extra) => {
       const share = formatNum(pct(extra.total, s.totalExtras)) + '%';
@@ -176,9 +176,9 @@ function printDailySalesSummary(printer, data, cfg) {
     });
   }
 
-  sect(printer, '10. Coupons breakdown');
+  sect(printer, '10. Desglose de cupones');
   if (!s.couponsList || s.couponsList.length === 0) {
-    printer.text('No coupon usage for this date.');
+    printer.text('No hay uso de cupones para esta fecha.');
   } else {
     s.couponsList.forEach((coupon) => {
       line(coupon.name, formatMoney(coupon.total, sym));

@@ -27,7 +27,7 @@ function build(printer, data = {}, config = {}) {
     const totalRows = [];
 
     taxes.forEach((t) => {
-      const name = t && (t.name || t.title) ? (t.name || t.title) : 'Tax';
+      const name = t && (t.name || t.title) ? (t.name || t.title) : 'Impuesto';
       const rate = t && typeof t.rate === 'number' ? t.rate : 0;
       const taxAmount = (baseTotal * rate) / 100;
       const taxLabel = rate ? `${name} @ ${rate}%` : name;
@@ -40,7 +40,7 @@ function build(printer, data = {}, config = {}) {
 
       // Line showing total including this tax
       totalRows.push({
-        label: `Total with ${taxLabel}`,
+        label: `Total con ${taxLabel}`,
         amount: baseTotal + taxAmount,
       });
     });

@@ -425,7 +425,7 @@ function mapOrderToBill(order, opts) {
   const total = forDelivery ? tot.totalWithDelivery : tot.total;
   const pay = getOrderPaymentSummary(order, total);
   const items = getOrderItems(order, showInclusivePrices);
-  const tipLabel = order && order.tip_type === 'Percent' ? 'Tip %' : 'Tip';
+  const tipLabel = order && order.tip_type === 'Percent' ? 'Propina %' : 'Propina';
   const discountLines = (order.order_discounts || [])
     .filter((od) => !od.removed_at)
     .map((od) => ({ name: od.name, amount: Number(od.applied_amount || 0) }));
@@ -464,7 +464,7 @@ function mapOrderToTemp(order, options) {
       forDelivery: false,
       showInclusivePrices: !!(options && options.showInclusivePrices),
     }),
-    title: 'Pre-Sale Bill',
+    title: 'Pre-Cuenta',
     note: '',
   };
 }
@@ -479,8 +479,8 @@ function mapOrderToFinal(order, options) {
       forDelivery: false,
       showInclusivePrices: !!(options && options.showInclusivePrices),
     }),
-    title: dup ? 'Duplicate Final Bill' : 'Final Bill',
-    thankYou: 'Thank you!',
+    title: dup ? 'Copia Cuenta Final' : 'Cuenta Final',
+    thankYou: '¡Muchas gracias por su visita!',
   };
 }
 
@@ -493,7 +493,7 @@ function mapOrderToDelivery(order, options) {
       forDelivery: true,
       showInclusivePrices: !!(options && options.showInclusivePrices),
     }),
-    title: 'DELIVERY',
+    title: 'ENVÍO',
     address: getOrderDeliveryAddress(order),
     phone: getOrderPhone(order),
     notes: getOrderDeliveryNotes(order),
@@ -559,7 +559,7 @@ function mapOrderToRefund(refundOrder, originalOrder, options) {
   const total = itemsTotal + taxAmount + serviceChargeAmount + tipAmount + extrasTotal + discountAmount;
   const orig = originalOrder || refundOrder;
   const serviceChargeLabel = getOrderServiceChargeLabel(refundOrder);
-  const tipLabel = refundOrder && refundOrder.tip_type === 'Percent' ? 'Tip %' : 'Tip';
+  const tipLabel = refundOrder && refundOrder.tip_type === 'Percent' ? 'Propina %' : 'Propina';
   return {
     originalOrderId: getOrderId(orig),
     table: getOrderTable(orig),

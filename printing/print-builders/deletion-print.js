@@ -59,13 +59,13 @@ function build(printer, data = {}, config = {}) {
   const printItems = mapPrintItems(items);
 
   const extraLines = [];
-  if (reason) extraLines.push({ label: 'Reason', value: reason });
-  if (comments) extraLines.push({ label: 'Note', value: comments });
+  if (reason) extraLines.push({ label: 'Motivo', value: reason });
+  if (comments) extraLines.push({ label: 'Nota', value: comments });
 
   return printReceiptHeader(printer, cfg).then(() => {
     printKotHeader(printer, {
       kitchenName,
-      bannerLabel: 'DELETION',
+      bannerLabel: 'ELIMINADO',
       orderId,
       table,
       orderType,

@@ -165,7 +165,7 @@ function renderBillToHtml(bill, config, opts) {
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Receipt preview</title>
+  <title>Previsualización de Cuenta</title>
   <style>${receiptPreviewStyles}
   </style>
 </head>
@@ -198,42 +198,42 @@ function renderSummaryToHtml(data, config) {
   parts.push(`<div class="title">Resumen de ventas diarias — ${escapeHtml(s.date)}</div>`);
   parts.push('<hr/>');
   parts.push(sect('1. Ingresos por ventas'));
-  parts.push(row('Exclusive sales', formatMoney(s.exclusiveSales, sym)));
+  parts.push(row('Ventas exclusivas', formatMoney(s.exclusiveSales, sym)));
   parts.push(row('Extras', formatMoney(s.totalExtras, sym)));
-  parts.push(row('Gross sales', formatMoney(s.grossSales, sym)));
-  parts.push(row('Item discounts', formatMoney(s.itemDiscounts, sym)));
-  parts.push(row('Subtotal discounts', formatMoney(s.subtotalDiscounts, sym)));
-  parts.push(row('Coupon discounts', formatMoney(s.couponDiscounts, sym)));
-  parts.push(row('(−) Discounts', formatMoney(s.discounts, sym)));
-  parts.push(row('Net sales', formatMoney(s.netSales, sym)));
+  parts.push(row('Ventas brutas', formatMoney(s.grossSales, sym)));
+  parts.push(row('Descuentos por ítem', formatMoney(s.itemDiscounts, sym)));
+  parts.push(row('Descuentos de subtotal', formatMoney(s.subtotalDiscounts, sym)));
+  parts.push(row('Descuentos por cupón', formatMoney(s.couponDiscounts, sym)));
+  parts.push(row('(−) Descuentos', formatMoney(s.discounts, sym)));
+  parts.push(row('Ventas netas', formatMoney(s.netSales, sym)));
   parts.push('<hr/>');
-  parts.push(sect('2. Surcharges and taxes'));
-  parts.push(row('Service charges', formatMoney(s.serviceCharges, sym)));
-  parts.push(row('Taxes', formatMoney(s.taxCollected, sym)));
-  parts.push(`<div class="row bold"><span>Total revenue</span><span>${escapeHtml(formatMoney(s.totalRevenue, sym))}</span></div>`);
+  parts.push(sect('2. Recargos e impuestos'));
+  parts.push(row('Cargos por servicio', formatMoney(s.serviceCharges, sym)));
+  parts.push(row('Impuestos', formatMoney(s.taxCollected, sym)));
+  parts.push(`<div class="row bold"><span>Ingresos totales</span><span>${escapeHtml(formatMoney(s.totalRevenue, sym))}</span></div>`);
   parts.push('<hr/>');
-  parts.push(sect('3. Settlement and cashier'));
-  parts.push(row('Amount due (before tips)', formatMoney(s.amountDue, sym)));
-  parts.push(row('Tips', formatMoney(s.tips, sym)));
-  parts.push(`<div class="row bold"><span>Grand total (due)</span><span>${escapeHtml(formatMoney(s.grandTotalDue, sym))}</span></div>`);
-  parts.push(row('Amount collected', formatMoney(s.amountCollected, sym)));
-  parts.push(row('Rounding', formatMoney(s.rounding, sym)));
-  parts.push(row('Change / variance', formatMoney(s.changeGiven, sym)));
+  parts.push(sect('3. Liquidación y cajero'));
+  parts.push(row('Monto a pagar (sin propinas)', formatMoney(s.amountDue, sym)));
+  parts.push(row('Propinas', formatMoney(s.tips, sym)));
+  parts.push(`<div class="row bold"><span>Total general (a pagar)</span><span>${escapeHtml(formatMoney(s.grandTotalDue, sym))}</span></div>`);
+  parts.push(row('Monto cobrado', formatMoney(s.amountCollected, sym)));
+  parts.push(row('Redondeo', formatMoney(s.rounding, sym)));
+  parts.push(row('Vuelto / diferencia', formatMoney(s.changeGiven, sym)));
   parts.push('<hr/>');
-  parts.push(sect('4. Operational controls'));
-  parts.push(row('Voids', formatMoney(s.voids, sym)));
-  parts.push(row('Refunds', formatMoney(s.refunds, sym)));
-  parts.push(row('Covers', formatNum(s.covers)));
-  parts.push(row('Average cover', formatMoney(s.averageCover, sym)));
-  parts.push(row('Orders / checks', formatNum(s.ordersCount)));
-  parts.push(row('Average order / check', formatMoney(s.averageOrderCheck, sym)));
+  parts.push(sect('4. Controles operacionales'));
+  parts.push(row('Anulaciones', formatMoney(s.voids, sym)));
+  parts.push(row('Reembolsos', formatMoney(s.refunds, sym)));
+  parts.push(row('Cubiertos', formatNum(s.covers)));
+  parts.push(row('Promedio por cubierto', formatMoney(s.averageCover, sym)));
+  parts.push(row('Pedidos / cuentas', formatNum(s.ordersCount)));
+  parts.push(row('Pedido / cuenta promedio', formatMoney(s.averageOrderCheck, sym)));
   parts.push('<hr/>');
-  parts.push(sect('5. Product mix'));
+  parts.push(sect('5. Mix de productos'));
   parts.push(
-    `<div class="row4"><span>Item</span><span>Qty</span><span>Total</span><span>Share</span></div>`
+    `<div class="row4"><span>Ítem</span><span>Cant</span><span>Total</span><span>Part (%)</span></div>`
   );
   if (!s.categoryMix || s.categoryMix.length === 0) {
-    parts.push('<p class="muted">No category data for this date.</p>');
+    parts.push('<p class="muted">No hay datos de categoría para esta fecha.</p>');
   } else {
     s.categoryMix.forEach((category) => {
       const catShare = formatNum(pct(category.total, ex)) + '%';
@@ -256,9 +256,9 @@ function renderSummaryToHtml(data, config) {
     });
   }
   parts.push('<hr/>');
-  parts.push(sect('6. Payment types'));
+  parts.push(sect('6. Tipos de pago'));
   if (!s.paymentTypes || s.paymentTypes.length === 0) {
-    parts.push('<p class="muted">No payment data for this date.</p>');
+    parts.push('<p class="muted">No hay datos de pago para esta fecha.</p>');
   } else {
     s.paymentTypes.forEach((payment) => {
       const p = formatNum(pct(payment.total, s.amountDue)) + '%';
@@ -268,9 +268,9 @@ function renderSummaryToHtml(data, config) {
     });
   }
   parts.push('<hr/>');
-  parts.push(sect('7. Taxes breakdown'));
+  parts.push(sect('7. Desglose de impuestos'));
   if (!s.taxesList || s.taxesList.length === 0) {
-    parts.push('<p class="muted">No tax rows for this date.</p>');
+    parts.push('<p class="muted">No hay filas de impuestos para esta fecha.</p>');
   } else {
     s.taxesList.forEach((tax) => {
       const p = formatNum(pct(tax.total, s.taxCollected)) + '%';
@@ -278,9 +278,9 @@ function renderSummaryToHtml(data, config) {
     });
   }
   parts.push('<hr/>');
-  parts.push(sect('8. Discounts breakdown'));
+  parts.push(sect('8. Desglose de descuentos'));
   if (!s.discountsList || s.discountsList.length === 0) {
-    parts.push('<p class="muted">No discount rows for this date.</p>');
+    parts.push('<p class="muted">No hay filas de descuentos para esta fecha.</p>');
   } else {
     s.discountsList.forEach((discount) => {
       const p = formatNum(pct(discount.total, s.discounts)) + '%';
@@ -288,9 +288,9 @@ function renderSummaryToHtml(data, config) {
     });
   }
   parts.push('<hr/>');
-  parts.push(sect('9. Extras breakdown'));
+  parts.push(sect('9. Desglose de extras'));
   if (!s.extrasList || s.extrasList.length === 0) {
-    parts.push('<p class="muted">No extras found for this date.</p>');
+    parts.push('<p class="muted">No se encontraron extras para esta fecha.</p>');
   } else {
     s.extrasList.forEach((extra) => {
       const p = formatNum(pct(extra.total, s.totalExtras)) + '%';
@@ -298,9 +298,9 @@ function renderSummaryToHtml(data, config) {
     });
   }
   parts.push('<hr/>');
-  parts.push(sect('10. Coupons breakdown'));
+  parts.push(sect('10. Desglose de cupones'));
   if (!s.couponsList || s.couponsList.length === 0) {
-    parts.push('<p class="muted">No coupon usage for this date.</p>');
+    parts.push('<p class="muted">No hay uso de cupones para esta fecha.</p>');
   } else {
     s.couponsList.forEach((coupon) => {
       parts.push(row(coupon.name, formatMoney(coupon.total, sym)));
@@ -319,7 +319,7 @@ function renderSummaryToHtml(data, config) {
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Summary preview</title>
+  <title>Previsualización de Resumen</title>
   <style>
     body { margin: 0; padding: 16px; background: #f0f0f0; font-family: 'Courier New', Consolas, monospace; }
     .receipt { max-width: 420px; margin: 0 auto; padding: 12px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.15); font-size: 12px; line-height: 1.4; }
@@ -354,9 +354,9 @@ function renderSummaryToHtml(data, config) {
 function renderKitchenToHtml(data, config) {
   const cfg = normalizeConfig(config || {});
   const order = data && data.order;
-  if (!order) return `<html><body><p>data.order required for kitchen preview</p></body></html>`;
+  if (!order) return `<html><body><p>Se requiere data.order para la previsualización de cocina</p></body></html>`;
   const { getOrderId, getOrderCreatedAt, getOrderUserName, getOrderType } = require('./order-mapping');
-  const kitchenName = data.kitchenName || 'KOT';
+  const kitchenName = data.kitchenName || 'Comanda';
   const isAddOn = !!data.isAddOn;
   const orderId = getOrderId(order);
   const createdAt = getOrderCreatedAt(order);
@@ -371,12 +371,12 @@ function renderKitchenToHtml(data, config) {
   if (brandingHeader) parts.push(brandingHeader);
   parts.push(`<div class="title size-medium">${escapeHtml(kitchenName)}</div>`);
   parts.push('<hr/>');
-  parts.push(`<div class="center size-medium bold">${escapeHtml(isAddOn ? 'ADDON' : 'New Order')}</div>`);
-  if (orderId) parts.push(`<div class="center size-medium bold">Order# ${escapeHtml(orderId)}</div>`);
-  if (table) parts.push(`<div class="row"><span>Table:</span><span>${escapeHtml(table)}</span></div>`);
-  if (orderType) parts.push(`<div class="row"><span>Order Type:</span><span>${escapeHtml(orderType)}</span></div>`);
-  if (orderTaker) parts.push(`<div class="row"><span>Order Taker:</span><span>${escapeHtml(orderTaker)}</span></div>`);
-  parts.push(`<div class="row"><span>Time:</span><span>${escapeHtml(createdAt)}</span></div>`);
+  parts.push(`<div class="center size-medium bold">${escapeHtml(isAddOn ? 'ADICIONAL' : 'Nuevo Pedido')}</div>`);
+  if (orderId) parts.push(`<div class="center size-medium bold">Pedido# ${escapeHtml(orderId)}</div>`);
+  if (table) parts.push(`<div class="row"><span>Mesa:</span><span>${escapeHtml(table)}</span></div>`);
+  if (orderType) parts.push(`<div class="row"><span>Tipo Pedido:</span><span>${escapeHtml(orderType)}</span></div>`);
+  if (orderTaker) parts.push(`<div class="row"><span>Tomado por:</span><span>${escapeHtml(orderTaker)}</span></div>`);
+  parts.push(`<div class="row"><span>Hora:</span><span>${escapeHtml(createdAt)}</span></div>`);
   parts.push('<hr/>');
   items.forEach((it) => {
     const dish = it.item || it.dish || {};
@@ -389,7 +389,7 @@ function renderKitchenToHtml(data, config) {
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Kitchen preview</title>
+  <title>Previsualización de Cocina</title>
   <style>
     body { margin: 0; padding: 16px; background: #f0f0f0; font-family: 'Courier New', Consolas, monospace; }
     .receipt { width: 280px; margin: 0 auto; padding: 12px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.15); font-size: 12px; line-height: 1.4; }
@@ -414,7 +414,7 @@ function renderRefundToHtml(data, config) {
   const sym = cfg.currencySymbol || '$';
   const refundOrder = data && data.order;
   const originalOrder = data && data.originalOrder;
-  if (!refundOrder) return `<html><body><p>data.order (refund order) is required for refund preview</p></body></html>`;
+  if (!refundOrder) return `<html><body><p>Se requiere data.order (pedido de reembolso) para la previsualización</p></body></html>`;
   const bill = mapOrderToRefund(refundOrder, originalOrder);
   const row = (left, right) =>
     `<div class="row"><span>${escapeHtml(left)}</span><span>${escapeHtml(right)}</span></div>`;
@@ -422,12 +422,12 @@ function renderRefundToHtml(data, config) {
   const parts = [];
   const brandingHeader = renderBrandingHeader(cfg);
   if (brandingHeader) parts.push(brandingHeader);
-  parts.push(`<div class="title">REFUND RECEIPT</div>`);
+  parts.push(`<div class="title">RECIBO DE REEMBOLSO</div>`);
   if (cfg.showVatNumber && cfg.vatNumber) {
     parts.push(`<div class="center">${escapeHtml(cfg.vatName + ': ' + cfg.vatNumber)}</div>`);
   }
-  parts.push(row(`Original Invoice# ${bill.originalOrderId || ''}`, ''));
-  parts.push(row(`Refund Date: ${bill.refundDate || ''}`, ''));
+  parts.push(row(`Factura/Boleta Orig.# ${bill.originalOrderId || ''}`, ''));
+  parts.push(row(`Fecha Reembolso: ${bill.refundDate || ''}`, ''));
   parts.push('<hr/>');
   (bill.items || []).forEach((it) => {
     const name = (it.name || it.title || '').slice(0, 28);
@@ -436,12 +436,12 @@ function renderRefundToHtml(data, config) {
     parts.push(row(`${name} x${qty}`, formatMoney(lineTotal, sym)));
   });
   parts.push('<hr/>');
-  parts.push(row(`Items (${bill.itemsCount || 0})`, formatMoney(bill.itemsTotal, sym)));
+  parts.push(row(`Productos (${bill.itemsCount || 0})`, formatMoney(bill.itemsTotal, sym)));
   if (bill.tax != null && Number(bill.tax) !== 0) {
-    parts.push(row(`Tax (${bill.taxLabel || 'Tax'})`, formatMoney(bill.tax, sym)));
+    parts.push(row(`Impuesto (${bill.taxLabel || 'Impuesto'})`, formatMoney(bill.tax, sym)));
   }
   if (bill.discount && bill.discountAmount != null && Number(bill.discountAmount) !== 0) {
-    parts.push(row('Discount', formatMoney(bill.discountAmount, sym)));
+    parts.push(row('Descuento', formatMoney(bill.discountAmount, sym)));
   }
   if (bill.serviceChargeLabel && bill.serviceChargeAmount != null && Number(bill.serviceChargeAmount) !== 0) {
     parts.push(row(bill.serviceChargeLabel, formatMoney(bill.serviceChargeAmount, sym)));
@@ -450,17 +450,17 @@ function renderRefundToHtml(data, config) {
     parts.push(row(e.name || 'Extra', formatMoney(e.value, sym)));
   });
   if (bill.tipAmount != null && Number(bill.tipAmount) !== 0) {
-    parts.push(row(bill.tipLabel || 'Tip', formatMoney(bill.tipAmount, sym)));
+    parts.push(row(bill.tipLabel || 'Propina', formatMoney(bill.tipAmount, sym)));
   }
   parts.push('<hr/>');
-  parts.push(`<div class="row bold"><span>Refund Total</span><span>${escapeHtml(formatMoney(bill.total, sym))}</span></div>`);
+  parts.push(`<div class="row bold"><span>Total Reembolso</span><span>${escapeHtml(formatMoney(bill.total, sym))}</span></div>`);
   const footerSections = renderSectionsToHtml(cfg.footerSections);
   if (footerSections) parts.push(footerSections);
   return `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Refund preview</title>
+  <title>Previsualización de Reembolso</title>
   <style>${receiptPreviewStyles}
   </style>
 </head>

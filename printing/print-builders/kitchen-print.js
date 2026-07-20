@@ -60,7 +60,7 @@ function build(printer, data = {}, config = {}) {
   return printReceiptHeader(printer, cfg).then(() => {
     printKotHeader(printer, {
       kitchenName,
-      bannerLabel: isAddOn ? 'ADDON' : 'New Order',
+      bannerLabel: isAddOn ? 'ADICIONAL' : 'Nuevo Pedido',
       orderId,
       table,
       orderType,
