@@ -65,13 +65,13 @@ export const KitchenForm = ({
         ...data,
         name: data.name,
         priority: data.priority,
-        printers: data?.printers?.map(item => ({
-          label: item.name,
-          value: item.id.toString()
+        printers: data?.printers?.filter(Boolean).map(item => ({
+          label: typeof item === 'object' ? (item?.name || String(item?.id || '')) : String(item),
+          value: typeof item === 'object' ? item?.id?.toString() : String(item)
         })),
-        items: data?.items?.map(item => ({
-          label: item.name,
-          value: item.id.toString()
+        items: data?.items?.filter(Boolean).map(item => ({
+          label: typeof item === 'object' ? (item?.name || String(item?.id || '')) : String(item),
+          value: typeof item === 'object' ? item?.id?.toString() : String(item)
         })),
       });
     }

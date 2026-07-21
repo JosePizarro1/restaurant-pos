@@ -147,7 +147,6 @@ export const AdminUsers = () => {
         <Tab id="Users">{t('tabs.users')}</Tab>
         <Tab id="Roles">{t('tabs.roles')}</Tab>
         <Tab id="Shifts">{t('tabs.shifts')}</Tab>
-        <Tab id="Tips definition">{t('tabs.tipsDefinition')}</Tab>
       </TabList>
       <TabPanel id="Users" className="bg-white">
         <AdminUsersList />
@@ -157,9 +156,6 @@ export const AdminUsers = () => {
       </TabPanel>
       <TabPanel id="Shifts" className="bg-white">
         <AdminShifts />
-      </TabPanel>
-      <TabPanel id="Tips definition" className="bg-white">
-        <AdminTipDistribution />
       </TabPanel>
     </Tabs>
   );

@@ -115,7 +115,7 @@ export const OrderTypeForm = ({
                 control={control}
                 render={({ field }) => (
                   <Switch checked={!!field.value} onChange={field.onChange}>
-                    Allow service charges
+                    {t('forms.allowServiceCharges')}
                   </Switch>
                 )}
               />

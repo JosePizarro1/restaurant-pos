@@ -56,7 +56,7 @@ export const AdminFloors = () => {
                 setData(info.row.original);
               }}
             >
-              Layout
+              {t('layout')}
             </Button>
             <div className="separator"></div>
             <DeleteConfirm

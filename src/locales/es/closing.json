@@ -17,12 +17,12 @@
     "label": "{{prefix}}: {{start}} - {{end}}"
   },
   "terminal": {
-    "defaultName": "Terminal {{number}}",
-    "notes": "Notas",
+    "defaultName": "Caja {{number}}",
+    "notes": "Billetes",
     "coins": "Monedas",
     "denomination": "x {{value}}",
-    "total": "Total de terminal: {{amount}}",
-    "add": "Agregar terminal"
+    "total": "Total de caja: {{amount}}",
+    "add": "Agregar caja"
   },
   "title": "Cierre diario al {{date}}",
   "loading": "Cargando cierre...",
@@ -34,7 +34,7 @@
   "sections": {
     "previousDayBalance": "Saldo del día anterior",
     "pettyCash": "Caja chica",
-    "terminalCash": "Efectivo de terminal",
+    "terminalCash": "Efectivo en caja",
     "paymentTypesSummary": "Resumen de tipos de pago del sistema",
     "expenses": "Gastos",
     "notes": "Notas",
