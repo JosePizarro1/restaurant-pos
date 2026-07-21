@@ -29,7 +29,11 @@ export const AdminKitchens = () => {
     }),
     columnHelper.accessor("printers", {
       header: t('columns.printers'),
-      cell: info => info.getValue()?.map(item => <span className="tag" key={item.id}>{item.name}</span>)
+      cell: info => info.getValue()?.filter(Boolean).map((item: any) => {
+        const key = typeof item === 'object' ? item?.id : String(item);
+        const label = typeof item === 'object' ? (item?.name || item?.id) : String(item);
+        return <span className="tag" key={key}>{label}</span>;
+      })
     }),
     columnHelper.accessor("priority", {
       header: t('columns.priority')

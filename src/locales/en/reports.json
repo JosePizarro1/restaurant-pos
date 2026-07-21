@@ -165,6 +165,57 @@
     "next": "Next",
     "pageOf": "Page {{current}} of {{total}}"
   },
+  "reportsFilters": {
+    "selectDate": "Select date",
+    "selectAWeek": "Select a week",
+    "transactionTypes": "Transaction Types",
+    "paymentTypes": "Payment Types",
+    "statusFilters": "Status Filters",
+    "sortResultBy": "Sort result by",
+    "sortDirection": "Sort direction",
+    "ascending": "Ascending",
+    "descending": "Descending",
+    "refund": "Refund",
+    "merged": "Merged",
+    "cancelled": "Cancelled",
+    "split": "Split",
+    "paid": "Paid",
+    "pending": "Pending",
+    "inProgress": "In Progress",
+    "showMenuItems": "Show Menu Items",
+    "showDetails": "Show Details",
+    "showMenuItemsForDetails": "Show Menu Items for Details",
+    "areas": "Areas",
+    "stores": "Stores",
+    "suppliers": "Suppliers",
+    "users": "Users",
+    "managers": "Managers",
+    "reasons": "Reasons",
+    "shift": "Shift",
+    "tables": "Tables",
+    "menuItemsMatch": "Menu Items Match",
+    "anySelectedItem": "Any selected item",
+    "allSelectedItems": "All selected items",
+    "selectSpecificDiscounts": "Select specific discounts (optional)",
+    "withTax": "With Tax",
+    "withoutTax": "Without Tax",
+    "taxFilter": "Tax Filter",
+    "discountFilter": "Discount Filter",
+    "withDiscount": "With Discount",
+    "withoutDiscount": "Without Discount",
+    "invoice": "Invoice",
+    "date": "Date",
+    "status": "Status",
+    "cashier": "Cashier",
+    "orderTaker": "Order taker",
+    "total": "Total",
+    "area": "Area",
+    "week": "Week",
+    "noWeeksAvailable": "No weeks available",
+    "loadingWeeks": "Loading weeks...",
+    "unableToLoadWeeks": "Unable to load weeks",
+    "orderTypes": "Order types"
+  },
   "filters": {
     "selectRange": "Select a range",
     "generate": "Generate",
@@ -491,6 +542,259 @@
     "help": {
       "store": "Include only closed buffet sessions at this store. Leave empty for all stores.",
       "sessionType": "Include only sessions for this meal period. Leave empty for all types."
+    }
+  },
+  "reportsScreens": {
+    "mergeOrders": {
+      "mergedAt": "Merged at",
+      "mergedBy": "Merged by",
+      "newOrder": "New order",
+      "oldOrders": "Old orders",
+      "noMergeEvents": "No merge events for selected range.",
+      "totalMergeEvents": "Total merge events:"
+    },
+    "splitOrders": {
+      "createdAt": "Created at",
+      "splitNumber": "Split #",
+      "noSplitOrders": "No split orders for selected range.",
+      "table": "Table"
+    },
+    "orderFinance": {
+      "createdAt": "Created at",
+      "noRowsFound": "No rows found for selected range."
+    },
+    "orderLifecycle": {
+      "noEventsFound": "No lifecycle events found for this order.",
+      "status": "Status"
+    },
+    "voids": {
+      "voidsByReason": "Voids by Reason",
+      "noVoidsByReason": "No voids by reason",
+      "voidsByManagers": "Voids by Managers",
+      "manager": "Manager",
+      "noVoidsByManager": "No voids by manager",
+      "voidsByMenuItems": "Voids by Menu Items",
+      "menuItem": "Menu Item",
+      "noVoidsByMenuItem": "No voids by menu item",
+      "noVoidsFound": "No voids found for the selected filters",
+      "noModifiers": "No modifiers"
+    },
+    "labor": {
+      "scheduledVsActual": {
+        "date": "Date",
+        "scheduledHrs": "Scheduled hrs",
+        "actualHrs": "Actual hrs",
+        "variance": "Variance",
+        "scheduledCost": "Scheduled cost",
+        "actualCost": "Actual cost",
+        "costVariance": "Cost var.",
+        "noScheduleVarianceData": "No schedule variance data"
+      },
+      "payrollSummary": {
+        "employees": "Employees",
+        "grossPay": "Gross pay",
+        "netPay": "Net pay",
+        "otHours": "OT hours",
+        "regularHrs": "Regular hrs",
+        "otHrs": "OT hrs",
+        "gross": "Gross",
+        "deductions": "Deductions",
+        "net": "Net",
+        "noPayrollSnapshots": "No payroll snapshots"
+      },
+      "attendance": {
+        "scheduled": "Scheduled",
+        "worked": "Worked",
+        "late": "Late",
+        "absent": "Absent",
+        "onTime": "On time",
+        "ratePercent": "Rate %",
+        "noAttendanceData": "No attendance data"
+      },
+      "overtime": {
+        "department": "Department",
+        "regular": "Regular",
+        "ot": "OT",
+        "double": "Double",
+        "otPay": "OT Pay",
+        "noOvertimeRecords": "No overtime records"
+      },
+      "dailyCost": {
+        "totalCost": "Total cost",
+        "totalHours": "Total hours",
+        "overtimeHours": "Overtime hours",
+        "date": "Date",
+        "hours": "Hours",
+        "otHours": "OT Hours",
+        "employees": "Employees",
+        "cost": "Cost"
+      },
+      "dashboard": {
+        "noTrendData": "No trend data"
+      }
+    },
+    "tips": {
+      "allShifts": "All shifts",
+      "totalTips": "Total tips",
+      "savedDistributions": "Saved distributions",
+      "noTipsFound": "No tips found for selected filters."
+    },
+    "expense": {
+      "totalExpenses": "Total expenses",
+      "noExpensesFound": "No expenses found for selected range."
+    },
+    "activity": {
+      "role": "Role",
+      "shift": "Shift",
+      "auth": "Auth",
+      "manager": "Manager",
+      "managerRole": "Manager Role",
+      "payload": "Payload",
+      "noActivityLogs": "No activity logs for selected range."
+    },
+    "product": {
+      "hourly": {
+        "taxesDiscountsWarning": "This report doesn't include taxes, discounts, service charges, extras and tips",
+        "menuItem": "Menu Item",
+        "totalQty": "Total Qty",
+        "subtotal": "Subtotal",
+        "noDataAvailable": "No data available for the selected filters"
+      },
+      "mixSummary": {
+        "taxesDiscountsWarning": "This report doesn't include taxes, discounts, service charges, extras and tips",
+        "noDataAvailable": "No data available for the selected filters"
+      },
+      "mixWeekly": {
+        "noDataAvailable": "No data available for the selected filters"
+      }
+    },
+    "salesAdvanced": {
+      "saleNoTax": "Sale w/o Tax",
+      "taxes": "Taxes",
+      "tip": "Tip",
+      "serviceCharges": "Service Charges",
+      "paymentBreakdown": "Payment Breakdown",
+      "notes": "Notes",
+      "noOrdersFound": "No orders found for the selected filters."
+    },
+    "salesHourlyLabour": {
+      "failedToFetchData": "Failed to fetch data",
+      "noDataAvailable": "No data available for the selected date range",
+      "error": "Error: {{error}}"
+    },
+    "salesHourlyLabourWeekly": {
+      "noDataAvailable": "No data available for the selected week."
+    },
+    "consumption": {
+      "noDataFound": "No consumption data found for the selected filters"
+    },
+    "issueReport": {
+      "noDataFound": "No issues found for the selected filters"
+    },
+    "purchaseReport": {
+      "noDataFound": "No purchases found for the selected filters"
+    },
+    "serverSales": {
+      "noCategoryData": "No category data found for this server."
+    },
+    "salesDash": {
+      "revenueOverTime": "Revenue over time",
+      "orderVolumeByHour": "Order volume by hour",
+      "salesByDayPart": "Sales by Day Part",
+      "salesByCategory": "Sales by Category",
+      "noDataAvailable": "No data available",
+      "noActivityFound": "No activity found",
+      "netSale": "Net Sale",
+      "totalRevenue": "Total Revenue",
+      "grandTotal": "Grand Total",
+      "serviceCharge": "Service Charge",
+      "totalOrder": "Total Order",
+      "totalCover": "Total Cover",
+      "avgOrder": "Avg Order",
+      "avgCover": "Avg Cover",
+      "refundOrder": "Refund Order",
+      "lateOrders": "Late Orders",
+      "topSellingItems": "Top Selling Items",
+      "excludeDeletedItems": "Exclude deleted/refunded/suspended items",
+      "quantity": "Quantity",
+      "topCashiers": "Top Cashiers",
+      "byTotalRevenue": "By total revenue",
+      "orders": "Orders",
+      "topTables": "Top Tables",
+      "topOrderTypes": "Top Order Types",
+      "paymentMethods": "Payment Methods",
+      "transactions": "Transactions",
+      "deliveryTabs": "Delivery tabs"
+    },
+    "inventoryDash": {
+      "noRecordsFound": "No records found",
+      "totalPurchases": "Total Purchases",
+      "purchaseReturns": "Purchase Returns",
+      "totalIssues": "Total Issues",
+      "issueReturns": "Issue Returns",
+      "wastes": "Wastes",
+      "noStockDataForStore": "No stock data for this store",
+      "noStoreStockData": "No store stock data available",
+      "latestPurchases": "Latest Purchases",
+      "latestPurchaseReturns": "Latest Purchase Returns",
+      "latestIssues": "Latest Issues",
+      "latestIssueReturns": "Latest Issue Returns",
+      "latestWastes": "Latest Wastes",
+      "fromPurchase": "From Purchase",
+      "fromIssue": "From Issue",
+      "storeTabs": "Store tabs"
+    },
+    "cashClosing": {
+      "noDataFound": "No cash closing found for selected date.",
+      "openingBalance": "Opening balance",
+      "totalCash": "Total cash",
+      "otherPayments": "Other payments",
+      "window": "Window",
+      "createdAt": "Created at",
+      "closedAt": "Closed at",
+      "notes": "Notes",
+      "terminalCash": "Terminal cash",
+      "terminal": "Terminal",
+      "noTerminalCashData": "No terminal cash data",
+      "paymentSummary": "Payment summary",
+      "paymentType": "Payment type",
+      "noPaymentSummaryData": "No payment summary data",
+      "unknown": "Unknown",
+      "noExpenseRecords": "No expense records",
+      "totalExpenses": "Total expenses"
+    },
+    "saleVsConsumption": {
+      "noDataAvailable": "No data available",
+      "title": "Sale vs Consumption",
+      "metric": "Metric",
+      "saleTotal": "Sale Total",
+      "profitPercent": "Profit Percent",
+      "saleVsInventory": "Sale vs Inventory (Issuance)",
+      "saleVsPurchase": "Sale vs Purchase"
+    },
+    "salesSummary2": {
+      "net": "= Net",
+      "amountCollected": "Amount collected",
+      "refunds": "+ Refunds",
+      "discounts": "+ Discounts",
+      "coupons": "+ Coupons",
+      "gross": "= Gross",
+      "totalDeletion": "Total deletion",
+      "outstandingChecks": "= Outstanding checks",
+      "saleByOrderType": "Sale by Order Type",
+      "salePriceNoTax": "Sale Price w/o Tax",
+      "taxes": "Taxes",
+      "serviceCharges": "Service Charges",
+      "percentOfTotal": "% of Total",
+      "turnTime": "Turn Time (min)",
+      "noOrderTypeData": "No order type data available",
+      "saleByDayPart": "Sale by Day Part",
+      "noCategoriesData": "No categories data",
+      "rate": "Rate",
+      "qty": "Qty",
+      "noUserDiscountsData": "No user discounts data",
+      "paymentTypes": "Payment Types",
+      "noPaymentTypesData": "No payment types data"
     }
   }
 }

@@ -612,7 +612,7 @@ export const InventoryIssueReturnForm = ({open, onClose, data}: Props) => {
 
           <div className="flex gap-3">
             <div className="flex-1">
-              <label>Documents</label>
+              <label>{t('forms.documents')}</label>
               <input
                 type="file"
                 multiple

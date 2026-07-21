@@ -2,6 +2,7 @@ import {useEffect, useMemo} from "react";
 import {useForm} from "react-hook-form";
 import {useTranslation} from "react-i18next";
 import * as yup from "yup";
+import i18n from "@/lib/i18n.ts";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {toast} from "sonner";
 import type {Dayjs} from "dayjs";
@@ -31,9 +32,9 @@ interface Props {
 }
 
 const validationSchema = yup.object({
-  employee: yup.object({label: yup.string().required(), value: yup.string().required()}).nullable().required("Required"),
-  clock_in: yup.mixed().nullable().required("Required"),
-  clock_out: yup.mixed().nullable().required("Required"),
+  employee: yup.object({label: yup.string().required(), value: yup.string().required()}).nullable().required(i18n.t("validation.required")),
+  clock_in: yup.mixed().nullable().required(i18n.t("validation.required")),
+  clock_out: yup.mixed().nullable().required(i18n.t("validation.required")),
   notes: yup.string().optional(),
 }).required();
 

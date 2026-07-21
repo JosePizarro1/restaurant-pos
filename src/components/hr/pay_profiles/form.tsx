@@ -2,6 +2,7 @@ import {useEffect, useMemo} from "react";
 import {useForm} from "react-hook-form";
 import {useTranslation} from "react-i18next";
 import * as yup from "yup";
+import i18n from "@/lib/i18n.ts";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {toast} from "sonner";
 import {DateValue} from "react-aria-components";
@@ -46,11 +47,11 @@ interface Props {
 
 const validationSchema = yup.object({
   id: yup.string().optional(),
-  employee: yup.object({label: yup.string().required(), value: yup.string().required()}).nullable().required("Required"),
-  pay_type: yup.string().required("Required"),
-  base_rate: yup.number().typeError("Required").required("Required"),
+  employee: yup.object({label: yup.string().required(), value: yup.string().required()}).nullable().required(i18n.t("validation.required")),
+  pay_type: yup.string().required(i18n.t("validation.required")),
+  base_rate: yup.number().typeError(i18n.t("validation.required")).required(i18n.t("validation.required")),
   currency: yup.string().optional(),
-  effective_from: yup.mixed().nullable().required("Required"),
+  effective_from: yup.mixed().nullable().required(i18n.t("validation.required")),
   effective_to: yup.mixed().nullable().optional(),
   notes: yup.string().optional(),
 }).required();

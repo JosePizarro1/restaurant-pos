@@ -15,6 +15,7 @@ import {faCalendar} from "@fortawesome/free-solid-svg-icons";
 import { Popover } from "@/components/common/react-aria/popover.tsx";
 import { useContext } from "react";
 import { Calendar } from "@/components/common/react-aria/calendar.tsx";
+import { useTranslation } from "react-i18next";
 
 interface Props<T extends DateValue> extends DatePickerProps<T> {
   label?: string;
@@ -57,12 +58,13 @@ export function DatePicker<T extends DateValue>({
 
 function DatePickerClearButton() {
   const state = useContext(DatePickerStateContext)!;
+  const { t } = useTranslation('common');
   return (
     <Button
       // Don't inherit default Button behavior from DatePicker.
       slot={null}
       className="clear-button"
-      aria-label="Clear"
+      aria-label={t('actions.clear')}
       onPress={() => state.setValue(null)}>
       ✕
     </Button>

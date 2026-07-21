@@ -58,15 +58,15 @@ export const LaborDailyCostReport = () => {
         <div className="space-y-4">
           <div className="grid grid-cols-3 gap-4">
             <div className="bg-primary-50 border border-primary-200 rounded-lg p-4">
-              <p className="text-sm text-primary-700">Total cost</p>
+              <p className="text-sm text-primary-700">{t('reportsScreens.labor.dailyCost.totalCost')}</p>
               <p className="text-xl font-bold text-primary-900">{withCurrency(totals.totalCost)}</p>
             </div>
             <div className="bg-info-50 border border-info-200 rounded-lg p-4">
-              <p className="text-sm text-info-700">Total hours</p>
+              <p className="text-sm text-info-700">{t('reportsScreens.labor.dailyCost.totalHours')}</p>
               <p className="text-xl font-bold text-info-900">{formatNumber(totals.totalHours)}</p>
             </div>
             <div className="bg-warning-50 border border-warning-200 rounded-lg p-4">
-              <p className="text-sm text-warning-700">Overtime hours</p>
+              <p className="text-sm text-warning-700">{t('reportsScreens.labor.dailyCost.overtimeHours')}</p>
               <p className="text-xl font-bold text-warning-900">{formatNumber(totals.overtimeHours)}</p>
             </div>
           </div>
@@ -74,11 +74,11 @@ export const LaborDailyCostReport = () => {
             <table className="min-w-full divide-y divide-neutral-200">
               <thead className="bg-neutral-50">
                 <tr>
-                  <th className="px-4 py-2 text-left text-xs font-semibold uppercase text-neutral-600">Date</th>
-                  <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Hours</th>
-                  <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">OT Hours</th>
-                  <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Employees</th>
-                  <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Cost</th>
+                  <th className="px-4 py-2 text-left text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.dailyCost.date')}</th>
+                  <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.dailyCost.hours')}</th>
+                  <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.dailyCost.otHours')}</th>
+                  <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.dailyCost.employees')}</th>
+                  <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.dailyCost.cost')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-neutral-100">

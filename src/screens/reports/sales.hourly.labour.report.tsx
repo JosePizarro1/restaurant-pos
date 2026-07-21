@@ -92,7 +92,7 @@ export const SalesHourlyLabourReport = () => {
         const fetchedTimeEntries = (timeEntriesResult[0] || []) as TimeEntry[];
         setTimeEntries(fetchedTimeEntries);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch data');
+        setError(err instanceof Error ? err.message : t('reportsScreens.salesHourlyLabour.failedToFetchData'));
         console.error('Error fetching report data:', err);
       } finally {
         setLoading(false);
@@ -259,7 +259,7 @@ export const SalesHourlyLabourReport = () => {
   if (error) {
     return (
       <ReportsLayout title={t('reports.salesHourlyLabour')} subtitle={subtitle}>
-        <div className="text-center p-8 text-red-600">Error: {error}</div>
+        <div className="text-center p-8 text-red-600">{t('reportsScreens.salesHourlyLabour.error', { error })}</div>
       </ReportsLayout>
     );
   }
@@ -300,7 +300,7 @@ export const SalesHourlyLabourReport = () => {
           {hourlyData.length === 0 && (
             <tr>
               <td colSpan={9} className="text-center p-8 text-gray-500">
-                No data available for the selected date range
+                {t('reportsScreens.salesHourlyLabour.noDataAvailable')}
               </td>
             </tr>
           )}

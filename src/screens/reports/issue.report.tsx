@@ -202,7 +202,7 @@ export const IssueReport = () => {
                 {issues.length === 0 ? (
                   <tr>
                     <td colSpan={11} className="py-6 text-center text-sm text-neutral-500">
-                      No issues found for the selected filters
+                      {t('reportsScreens.issueReport.noDataFound')}
                     </td>
                   </tr>
                 ) : (

@@ -43,11 +43,11 @@ export const PurchaseFilter = () => {
       className="flex flex-col gap-4 items-start w-full"
       target="_blank"
     >
-      <DateRange isRequired label="Select a range" />
+      <DateRange isRequired label={t('filters.selectRange')} />
 
       <div className="w-full flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="purchase-suppliers">Suppliers</label>
+          <label htmlFor="purchase-suppliers">{t('reportsFilters.suppliers')}</label>
           <ReactSelect
             id="purchase-suppliers"
             name="suppliers[]"
@@ -61,7 +61,7 @@ export const PurchaseFilter = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="purchase-stores">Stores</label>
+          <label htmlFor="purchase-stores">{t('reportsFilters.stores')}</label>
           <ReactSelect
             id="purchase-stores"
             name="stores[]"

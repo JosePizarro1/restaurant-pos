@@ -90,8 +90,8 @@ export const InventoryIssueViewModal = ({open, issue, onClose}: Props) => {
           </div>
 
           <div className="bg-white rounded-xl shadow border border-neutral-200 p-4">
-            <div className="text-sm font-semibold text-neutral-800 mb-3">
-              Items
+              <div className="text-sm font-semibold text-neutral-800 mb-3">
+              {t('tabs.items')}
             </div>
             {viewIssue.items && viewIssue.items.length > 0 ? (
               <div className="max-h-64 overflow-auto divide-y divide-neutral-200">
@@ -123,7 +123,7 @@ export const InventoryIssueViewModal = ({open, issue, onClose}: Props) => {
               </div>
             ) : (
               <div className="text-sm text-neutral-500">
-                No items found for this issue.
+                {t('modals.noItemsFound')}
               </div>
             )}
           </div>
@@ -167,14 +167,14 @@ export const InventoryIssueViewModal = ({open, issue, onClose}: Props) => {
                       }
                     >
                       <FontAwesomeIcon icon={faDownload} className="mr-1"/>
-                      Download
+                      {t('actions.download')}
                     </Button>
                   </div>
                 ))}
               </div>
             ) : (
               <div className="text-sm text-neutral-500">
-                No documents attached to this issue.
+                {t('modals.noDocumentsAttached')}
               </div>
             )}
           </div>

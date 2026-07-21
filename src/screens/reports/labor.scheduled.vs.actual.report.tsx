@@ -50,19 +50,19 @@ export const LaborScheduledVsActualReport = () => {
           <table className="min-w-full divide-y divide-neutral-200">
             <thead className="bg-neutral-50">
               <tr>
-                <th className="px-4 py-2 text-left text-xs font-semibold uppercase text-neutral-600">Date</th>
+                <th className="px-4 py-2 text-left text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.scheduledVsActual.date')}</th>
                 <th className="px-4 py-2 text-left text-xs font-semibold uppercase text-neutral-600">{t('columns.name')}</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Scheduled hrs</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Actual hrs</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Variance</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Scheduled cost</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Actual cost</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Cost var.</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.scheduledVsActual.scheduledHrs')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.scheduledVsActual.actualHrs')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.scheduledVsActual.variance')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.scheduledVsActual.scheduledCost')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.scheduledVsActual.actualCost')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.scheduledVsActual.costVariance')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-100">
               {rows.length === 0 ? (
-                <tr><td colSpan={8} className="px-4 py-8 text-center text-neutral-500">No schedule variance data</td></tr>
+                <tr><td colSpan={8} className="px-4 py-8 text-center text-neutral-500">{t('reportsScreens.labor.scheduledVsActual.noScheduleVarianceData')}</td></tr>
               ) : rows.map(row => (
                 <tr key={`${row.employeeId}-${row.date}`}>
                   <td className="px-4 py-2 text-sm text-neutral-800">{row.date}</td>

@@ -250,13 +250,13 @@ export const ProductHourlyReport = () => {
 
   return (
     <ReportsLayout title={t('titles.productHourly')} subtitle={subtitle}>
-      <div className="alert alert-warning">This report doesn't include taxes, discounts, service charges, extras and tips</div>
+      <div className="alert alert-warning">{t('reportsScreens.product.hourly.taxesDiscountsWarning')}</div>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-neutral-200 border border-neutral-200">
           <thead className="bg-neutral-50">
             <tr>
               <th rowSpan={2} className="py-3 pl-6 pr-3 text-left text-xs font-semibold text-neutral-700 border-r border-neutral-200">
-                Menu Item
+                {t('reportsScreens.product.hourly.menuItem')}
               </th>
               {displayHours.map(hour => (
                 <th key={hour} colSpan={1} className="py-3 px-3 text-center text-xs font-semibold text-neutral-700 border-r border-neutral-200">
@@ -266,10 +266,10 @@ export const ProductHourlyReport = () => {
                 </th>
               ))}
               <th rowSpan={2} className="py-3 px-3 text-center text-xs font-semibold text-neutral-700 border-r border-neutral-200">
-                Total Qty
+                {t('reportsScreens.product.hourly.totalQty')}
               </th>
               <th rowSpan={2} className="py-3 px-3 text-center text-xs font-semibold text-neutral-700 border-r border-neutral-200">
-                Subtotal
+                {t('reportsScreens.product.hourly.subtotal')}
               </th>
               <th rowSpan={2} className="py-3 px-3 text-center text-xs font-semibold text-neutral-700 border-r border-neutral-200">
                 Taxes
@@ -311,7 +311,7 @@ export const ProductHourlyReport = () => {
             {menuItemMetrics.length === 0 && (
               <tr>
                 <td colSpan={displayHours.length + 5} className="py-6 text-center text-sm text-neutral-500">
-                  No data available for the selected filters
+                  {t('reportsScreens.product.hourly.noDataAvailable')}
                 </td>
               </tr>
             )}

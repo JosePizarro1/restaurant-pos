@@ -225,7 +225,7 @@ export const PurchaseReport = () => {
                 {purchases.length === 0 ? (
                   <tr>
                     <td colSpan={13} className="py-6 text-center text-sm text-neutral-500">
-                      No purchases found for the selected filters
+                      {t('reportsScreens.purchaseReport.noDataFound')}
                     </td>
                   </tr>
                 ) : (

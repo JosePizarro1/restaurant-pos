@@ -162,7 +162,7 @@ const SalesLineChart = ({
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-2xl font-bold text-neutral-700">Sales Trend</h2>
-          <p className="text-sm text-neutral-500">Revenue over time</p>
+          <p className="text-sm text-neutral-500">{t('reportsScreens.salesDash.revenueOverTime')}</p>
         </div>
       </div>
       <div className="h-[300px] relative">
@@ -274,7 +274,7 @@ const OrdersPerHourChart = ({
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-2xl font-bold text-neutral-700">Orders Per Hour</h2>
-          <p className="text-sm text-neutral-500">Order volume by hour</p>
+          <p className="text-sm text-neutral-500">{t('reportsScreens.salesDash.orderVolumeByHour')}</p>
         </div>
       </div>
       <div className="h-[300px] relative">
@@ -365,6 +365,7 @@ const OrdersPerHourChart = ({
 };
 
 const DayPartsWidget = ({dayParts}: {dayParts: {label: string; orders: number; revenue: number}[]}) => {
+  const { t } = useTranslation('reports');
   const DAY_PART_COLORS = [
     '#FFA514', // breakfast - warning
     '#3DE567', // lunch - success
@@ -393,7 +394,7 @@ const DayPartsWidget = ({dayParts}: {dayParts: {label: string; orders: number; r
           <Clock className="w-5 h-5 text-warning-600" />
         </div>
         <div>
-          <h2 className="text-xl font-bold text-neutral-700">Sales by Day Part</h2>
+          <h2 className="text-xl font-bold text-neutral-700">{t('reportsScreens.salesDash.salesByDayPart')}</h2>
           <p className="text-xs text-neutral-500">{dayPartSummary}</p>
         </div>
       </div>
@@ -470,7 +471,7 @@ const CategoryPieWidget = ({categories}: {categories: CategorySales[]}) => {
           <Tag className="w-5 h-5 text-success-600" />
         </div>
         <div>
-          <h2 className="text-xl font-bold text-neutral-700">Sales by Category</h2>
+          <h2 className="text-xl font-bold text-neutral-700">{t('reportsScreens.salesDash.salesByCategory')}</h2>
           <p className="text-xs text-neutral-500">{t('labels.distribution')}</p>
         </div>
       </div>
@@ -613,7 +614,7 @@ const BreakdownTabsWidget = ({
                 ]}
               />
             ) : (
-              <div className="h-full flex items-center justify-center text-neutral-500">No data available</div>
+              <div className="h-full flex items-center justify-center text-neutral-500">{t('reportsScreens.salesDash.noDataAvailable')}</div>
             )}
           </div>
         </TabPanel>
@@ -636,7 +637,7 @@ const BreakdownTabsWidget = ({
                   </tr>
                 )) : (
                   <tr>
-                    <td colSpan={3} className="py-6 text-center text-sm text-neutral-500">No data available</td>
+                    <td colSpan={3} className="py-6 text-center text-sm text-neutral-500">{t('reportsScreens.salesDash.noDataAvailable')}</td>
                   </tr>
                 )}
               </tbody>
@@ -713,7 +714,7 @@ const ActivitySection = () => {
         {trackingLoading ? (
           <div className="p-4 text-sm text-neutral-500">{t('loading.latestActivity')}</div>
         ) : trackingRows.length === 0 ? (
-          <div className="p-4 text-sm text-neutral-500">No activity found</div>
+          <div className="p-4 text-sm text-neutral-500">{t('reportsScreens.salesDash.noActivityFound')}</div>
         ) : (
           
           <table className="table table-xs">
@@ -927,7 +928,7 @@ const DeliverySection = ({orders}: {orders: Order[]}) => {
         selectedKey={selectedTab}
         onSelectionChange={(key: string) => setSelectedTab(key as 'map' | 'table')}
       >
-        <TabList aria-label="Delivery tabs" className="flex flex-row gap-3 mb-4">
+        <TabList aria-label={t('reportsScreens.salesDash.deliveryTabs')} className="flex flex-row gap-3 mb-4">
           <Tab activeClass="bg-neutral-900 text-warning-500" id="map" key="map">{t('labels.mapView')}</Tab>
           <Tab activeClass="bg-neutral-900 text-warning-500" id="table" key="table">{t('labels.tableView')}</Tab>
         </TabList>
@@ -1609,7 +1610,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-success-700"
             />
             <KPIMetricWidget
-              title="Net Sale"
+              title={t('reportsScreens.salesDash.netSale')}
               value={withCurrency(kpis.netSale)}
               icon={TrendingUp}
               gradientFrom="from-primary-100"
@@ -1619,7 +1620,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-primary-700"
             />
             <KPIMetricWidget
-              title="Total Revenue"
+              title={t('reportsScreens.salesDash.totalRevenue')}
               value={withCurrency(kpis.totalRevenue)}
               icon={ArrowLeftRight}
               gradientFrom="from-info-100"
@@ -1629,7 +1630,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-info-700"
             />
             <KPIMetricWidget
-              title="Grand Total"
+              title={t('reportsScreens.salesDash.grandTotal')}
               value={withCurrency(kpis.grandTotal)}
               icon={ShoppingCart}
               gradientFrom="from-primary-100"
@@ -1669,7 +1670,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-danger-700"
             />
             <KPIMetricWidget
-              title="Service Charge"
+              title={t('reportsScreens.salesDash.serviceCharge')}
               value={withCurrency(kpis.serviceCharge)}
               icon={ArrowLeftRight}
               gradientFrom="from-primary-100"
@@ -1679,7 +1680,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-primary-700"
             />
             <KPIMetricWidget
-              title="Total Order"
+              title={t('reportsScreens.salesDash.totalOrder')}
               value={formatNumber(kpis.totalOrder)}
               icon={Package}
               gradientFrom="from-info-100"
@@ -1689,7 +1690,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-info-700"
             />
             <KPIMetricWidget
-              title="Total Cover"
+              title={t('reportsScreens.salesDash.totalCover')}
               value={formatNumber(kpis.totalCover)}
               icon={UserCheck}
               gradientFrom="from-success-100"
@@ -1699,7 +1700,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-success-700"
             />
             <KPIMetricWidget
-              title="Avg Order"
+              title={t('reportsScreens.salesDash.avgOrder')}
               value={withCurrency(kpis.avgOrder)}
               icon={TrendingUp}
               gradientFrom="from-warning-100"
@@ -1709,7 +1710,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-warning-700"
             />
             <KPIMetricWidget
-              title="Avg Cover"
+              title={t('reportsScreens.salesDash.avgCover')}
               value={withCurrency(kpis.avgCover)}
               icon={DollarSign}
               gradientFrom="from-success-100"
@@ -1719,7 +1720,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-success-700"
             />
             <KPIMetricWidget
-              title="Refund Order"
+              title={t('reportsScreens.salesDash.refundOrder')}
               value={formatNumber(kpis.refundOrder)}
               icon={ArrowLeftRight}
               gradientFrom="from-info-100"
@@ -1729,7 +1730,7 @@ export const SalesDashboardReport = () => {
               labelColor="text-info-700"
             />
             <KPIMetricWidget
-              title="Late Orders"
+              title={t('reportsScreens.salesDash.lateOrders')}
               value={formatNumber(kpis.lateOrders)}
               icon={Clock}
               gradientFrom="from-warning-100"
@@ -1793,12 +1794,12 @@ export const SalesDashboardReport = () => {
         {/* Top Items and Day Parts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <BreakdownTabsWidget
-            title="Top Selling Items"
-            subtitle="Exclude deleted/refunded/suspended items"
+            title={t('reportsScreens.salesDash.topSellingItems')}
+            subtitle={t('reportsScreens.salesDash.excludeDeletedItems')}
             rows={topItemsBreakdown}
             icon={Package}
             colorClass={{bg: 'bg-primary-100', text: 'text-primary-600'}}
-            countLabel="Quantity"
+            countLabel={t('reportsScreens.salesDash.quantity')}
           />
           <DayPartsWidget dayParts={dayParts} />
         </div>
@@ -1806,40 +1807,40 @@ export const SalesDashboardReport = () => {
         {/* Users and Tables */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <BreakdownTabsWidget
-            title="Top Cashiers"
-            subtitle="By total revenue"
+            title={t('reportsScreens.salesDash.topCashiers')}
+            subtitle={t('reportsScreens.salesDash.byTotalRevenue')}
             rows={topUsersBreakdown}
             icon={UserCheck}
             colorClass={{bg: 'bg-info-100', text: 'text-info-600'}}
-            countLabel="Orders"
+            countLabel={t('reportsScreens.salesDash.orders')}
           />
           <BreakdownTabsWidget
-            title="Top Tables"
-            subtitle="By total revenue"
+            title={t('reportsScreens.salesDash.topTables')}
+            subtitle={t('reportsScreens.salesDash.byTotalRevenue')}
             rows={topTablesBreakdown}
             icon={TableIcon}
             colorClass={{bg: 'bg-warning-100', text: 'text-warning-600'}}
-            countLabel="Orders"
+            countLabel={t('reportsScreens.salesDash.orders')}
           />
         </div>
 
         {/* Order Types and Payment Methods */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <BreakdownTabsWidget
-            title="Top Order Types"
-            subtitle="By total revenue"
+            title={t('reportsScreens.salesDash.topOrderTypes')}
+            subtitle={t('reportsScreens.salesDash.byTotalRevenue')}
             rows={orderTypesBreakdown}
             icon={Package}
             colorClass={{bg: 'bg-primary-100', text: 'text-primary-600'}}
-            countLabel="Orders"
+            countLabel={t('reportsScreens.salesDash.orders')}
           />
           <BreakdownTabsWidget
-            title="Payment Methods"
+            title={t('reportsScreens.salesDash.paymentMethods')}
             subtitle="Using getOrderPaymentTotals"
             rows={paymentTypesBreakdown}
             icon={Tag}
             colorClass={{bg: 'bg-success-100', text: 'text-success-600'}}
-            countLabel="Transactions"
+            countLabel={t('reportsScreens.salesDash.transactions')}
           />
         </div>
 

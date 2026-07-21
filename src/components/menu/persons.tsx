@@ -6,6 +6,8 @@ import { useDB } from "@/api/db/db.ts";
 import {getClosingEnforcementState} from "@/lib/closing.guard.ts";
 import {useTranslation} from "react-i18next";
 import i18n from "@/lib/i18n.ts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const MenuPersons = () => {
   const { t } = useTranslation('menu');
@@ -15,6 +17,32 @@ export const MenuPersons = () => {
   const [error, setError] = useState(false);
   const [first, setFirst] = useState(true);
   const db = useDB();
+
+  const onCancel = async () => {
+    if (state.table?.id) {
+      try {
+        await db.merge(state.table.id, {
+          is_locked: false,
+          locked_at: null,
+          locked_by: null,
+        });
+      } catch (err) {
+        console.error("Failed to unlock table on cancel:", err);
+      }
+    }
+
+    setState(prev => ({
+      ...prev,
+      showFloor: true,
+      showPersons: false,
+      table: undefined,
+      order: undefined,
+      orders: [],
+      cart: [],
+      seats: [],
+      persons: '1'
+    }));
+  };
 
   useEffect(() => {
     if (!enforcement.orderTakingBlocked || state.showFloor) {
@@ -29,6 +57,7 @@ export const MenuPersons = () => {
       order: undefined,
       orders: [],
       cart: [],
+      seats: [],
     }));
 
     if (enforcement.message) {
@@ -103,9 +132,24 @@ export const MenuPersons = () => {
   const btnClasses = 'size-[85px] sm:size-[100px] md:size-[120px] p-0 text-neutral-900 active:scale-[0.95] transition-all duration-75 bg-neutral-100 active:text-neutral-100 active:bg-neutral-900 rounded-full text-3xl';
 
   return (
-    <div className="flex h-screen w-full justify-center items-center flex-col gap-5 bg-white">
+    <div className="flex h-screen w-full justify-center items-center flex-col gap-5 bg-white relative">
+      <button
+        type="button"
+        onClick={onCancel}
+        className="absolute top-6 left-6 px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 active:scale-95 text-neutral-700 rounded-xl font-semibold text-base flex items-center gap-2 border shadow-sm pressable transition-all cursor-pointer"
+      >
+        <FontAwesomeIcon icon={faArrowLeft} />
+        {t('modifiers.cancel', 'Volver al Mapa')}
+      </button>
+
+      {state.table && (
+        <div className="text-lg font-bold text-neutral-600 bg-neutral-100 px-5 py-2 rounded-full border shadow-sm">
+          {state.table.name}
+        </div>
+      )}
+
       <h3 className={
-        cn("text-4xl", error && 'login-error')
+        cn("text-3xl font-bold text-neutral-800", error && 'login-error')
       }>{t('persons.chooseCount')}</h3>
       <div
         className="w-[380px] h-[75px] flex items-center justify-center text-3xl font-bold">{state.persons}</div>

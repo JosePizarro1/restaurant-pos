@@ -51,17 +51,17 @@ export const LaborAttendanceReport = () => {
             <thead className="bg-neutral-50">
               <tr>
                 <th className="px-4 py-2 text-left text-xs font-semibold uppercase text-neutral-600">{t('columns.name')}</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Scheduled</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Worked</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Late</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Absent</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">On time</th>
-                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">Rate %</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.attendance.scheduled')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.attendance.worked')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.attendance.late')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.attendance.absent')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.attendance.onTime')}</th>
+                <th className="px-4 py-2 text-right text-xs font-semibold uppercase text-neutral-600">{t('reportsScreens.labor.attendance.ratePercent')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-100">
               {rows.length === 0 ? (
-                <tr><td colSpan={7} className="px-4 py-8 text-center text-neutral-500">No attendance data</td></tr>
+                <tr><td colSpan={7} className="px-4 py-8 text-center text-neutral-500">{t('reportsScreens.labor.attendance.noAttendanceData')}</td></tr>
               ) : rows.map(row => (
                 <tr key={row.employeeId}>
                   <td className="px-4 py-2 text-sm text-neutral-800">{row.employeeName}</td>

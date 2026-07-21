@@ -250,7 +250,7 @@ export const ProductMixSummaryReport = () => {
 
   return (
     <ReportsLayout onRefresh={fetchData} title={t('reports.productMixSummary')} subtitle={subtitle}>
-      <div className="alert alert-warning">This report doesn't include taxes, discounts, service charges, extras and tips</div>
+      <div className="alert alert-warning">{t('reportsScreens.product.mixSummary.taxesDiscountsWarning')}</div>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-neutral-200 border border-neutral-200">
           <thead className="bg-neutral-50">
@@ -431,7 +431,7 @@ export const ProductMixSummaryReport = () => {
             {categoryGroups.length === 0 && (
               <tr>
                 <td colSpan={COLUMN_COUNT} className="py-6 text-center text-sm text-neutral-500">
-                  No data available for the selected filters
+                  {t('reportsScreens.product.mixSummary.noDataAvailable')}
                 </td>
               </tr>
             )}

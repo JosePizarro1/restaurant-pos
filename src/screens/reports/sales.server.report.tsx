@@ -537,7 +537,7 @@ export const SalesServerReport = () => {
                     {section.categories.length === 0 && (
                       <tr>
                         <td colSpan={9} className="text-center text-gray-500 py-4">
-                          No category data found for this server.
+                          {t('reportsScreens.serverSales.noCategoryData')}
                         </td>
                       </tr>
                     )}

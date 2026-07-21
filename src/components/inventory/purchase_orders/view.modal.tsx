@@ -151,7 +151,7 @@ export const InventoryPurchaseOrderViewModal = ({open, order, onClose}: Props) =
               </>
             ) : (
               <div className="text-sm text-neutral-500">
-                No items found for this purchase order.
+                {t('modals.noItemsFound')}
               </div>
             )}
           </div>
@@ -195,14 +195,14 @@ export const InventoryPurchaseOrderViewModal = ({open, order, onClose}: Props) =
                       }
                     >
                       <FontAwesomeIcon icon={faDownload} className="mr-1"/>
-                      Download
+                      {t('actions.download')}
                     </Button>
                   </div>
                 ))}
               </div>
             ) : (
               <div className="text-sm text-neutral-500">
-                No documents attached to this purchase order.
+                {t('modals.noDocumentsAttached')}
               </div>
             )}
           </div>

@@ -85,7 +85,7 @@ export const SalesHourlyLabourWeeklyFilter = () => {
       } catch (err) {
         console.error("Failed to load weeks:", err);
         if (isMounted) {
-          setError("Unable to load weeks");
+          setError(t('reportsFilters.unableToLoadWeeks'));
         }
       } finally {
         if (isMounted) {
@@ -118,7 +118,7 @@ export const SalesHourlyLabourWeeklyFilter = () => {
       target="_blank"
     >
       <div>
-        <label htmlFor="week-select">Select a week</label>
+        <label htmlFor="week-select">{t('reportsFilters.selectAWeek')}</label>
         <select
           id="week-select"
           name="week"
@@ -129,11 +129,11 @@ export const SalesHourlyLabourWeeklyFilter = () => {
           required
         >
           {!loading && !weeks.length && (
-            <option>No weeks available</option>
+            <option>{t('reportsFilters.noWeeksAvailable')}</option>
           )}
           {weekOptions}
         </select>
-        {loading && <p className="text-sm text-gray-500">Loading weeks...</p>}
+        {loading && <p className="text-sm text-gray-500">{t('reportsFilters.loadingWeeks')}</p>}
         {error && <p className="text-sm text-danger-600">{error}</p>}
       </div>
 

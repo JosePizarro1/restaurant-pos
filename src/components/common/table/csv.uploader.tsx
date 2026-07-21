@@ -1,4 +1,5 @@
 import React, {useMemo, useState} from "react";
+import { useTranslation } from 'react-i18next';
 import {Modal} from "@/components/common/react-aria/modal.tsx";
 import {Button} from "@/components/common/input/button.tsx";
 import {cn} from "@/lib/utils.ts";
@@ -64,11 +65,13 @@ type CsvUploadModalProps = {
 export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
   isOpen,
   onClose,
-  title = "Upload records using CSV",
+  title,
   fields,
   onCreateRow,
   onDone
 }) => {
+  const { t } = useTranslation('common');
+  const modalTitle = title ?? t('csvUploader.defaultTitle');
   const [fileName, setFileName] = useState<string | null>(null);
   const [headers, setHeaders] = useState<string[]>([]);
   const [rows, setRows] = useState<string[][]>([]);
@@ -95,7 +98,7 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
       const {headers: h, rows: r} = parseCsv(text);
 
       if (h.length === 0) {
-        setError("No headers found in CSV.");
+        setError(t('csvUploader.noHeaders'));
         return;
       }
 
@@ -116,7 +119,7 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
       setMapping(newMapping);
     } catch (err: any) {
       console.error(err);
-      setError("Failed to read or parse CSV file.");
+      setError(t('csvUploader.parseFailed'));
     }
   };
 
@@ -135,11 +138,11 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
 
   const handleCreate = async () => {
     if (!hasFile) {
-      setError("Please upload a CSV file first.");
+      setError(t('csvUploader.uploadFirst'));
       return;
     }
     if (!allRequiredMapped) {
-      setError("Please map all fields before creating records.");
+      setError(t('csvUploader.mapAllFields'));
       return;
     }
 
@@ -177,16 +180,16 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
           console.error("Row create failed", err, payload);
           failureCount++;
           rowErrors[rowIndex] =
-            (err && err.message) || String(err) || "Failed to create this row.";
+            (err && err.message) || String(err) || t('csvUploader.rowFailed');
         }
       }
 
       setErrors(rowErrors);
 
       setResultMessage(
-        `Processed ${rows.length} rows. Success: ${successCount}.`
+        t('csvUploader.processed', { count: rows.length, success: successCount })
       );
-      setError(`Failed: ${failureCount}`);
+      setError(t('csvUploader.failed', { count: failureCount }));
 
       if (onDone !== undefined) {
         onDone({
@@ -229,7 +232,7 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
       open={true}
       onClose={handleClose}
       size="xl"
-      title={title}
+      title={modalTitle}
     >
       <div className="space-y-4 px-6 py-4">
         {/* File input */}
@@ -240,7 +243,7 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
             onClick={downloadTemplate}
             variant="secondary"
             icon={faDownload}
-          >Download template</Button>
+          >{t('csvUploader.downloadTemplate')}</Button>
           <label htmlFor="file" className="btn btn-primary gap-3">
             <input
               type="file"
@@ -249,15 +252,15 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
               onChange={handleFileChange}
               disabled={isProcessing}
               id="file"
-            /><FontAwesomeIcon icon={faUpload}/> Upload CSV file
+            /><FontAwesomeIcon icon={faUpload}/> {t('csvUploader.uploadCsv')}
           </label>
           {fileName && (
             <div className="text-xs text-gray-900 bg-gray-300 p-3">
-              Current file: <span className="font-medium">{fileName}</span>
+              {t('csvUploader.currentFile')} <span className="font-medium">{fileName}</span>
             </div>
           )}
         </div>
-        <div className="text-primary-500">Use pipe operator "|" for multiple values. For example "store 1|store 2"
+        <div className="text-primary-500">{t('csvUploader.pipeHint')}
           etc...
         </div>
 
@@ -265,7 +268,7 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
         {hasFile && (
           <div className="rounded border bg-gray-50 p-4">
             <h3 className="mb-2 text-sm font-semibold text-gray-800">
-              Column Mapping
+              {t('csvUploader.columnMapping')}
             </h3>
 
             <div className="grid gap-3 md:grid-cols-5">
@@ -282,7 +285,7 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
                     }
                     disabled={isProcessing}
                   >
-                    <option value="">-- Not mapped --</option>
+                    <option value="">{t('csvUploader.notMapped')}</option>
                     {headers.map((h) => (
                       <option key={h} value={h}>
                         {h}
@@ -295,7 +298,7 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
 
             {!allRequiredMapped && (
               <p className="mt-2 text-danger-600">
-                Map all fields before creating records.
+                {t('csvUploader.mapAllFieldsWarning')}
               </p>
             )}
           </div>
@@ -373,7 +376,7 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
       {/* Footer */}
       <div className="flex items-center justify-between border-t px-6 py-3">
           <span className="text-gray-500">
-            Rows: {rows.length}
+            {t('csvUploader.rows')}: {rows.length}
           </span>
         <div className="flex items-center gap-2">
           <Button
@@ -382,7 +385,7 @@ export const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
             onClick={handleCreate}
             disabled={!hasFile || !allRequiredMapped || isProcessing}
           >
-            {isProcessing ? "Creating..." : "Create"}
+            {isProcessing ? t('csvUploader.creating') : t('csvUploader.create')}
           </Button>
         </div>
       </div>

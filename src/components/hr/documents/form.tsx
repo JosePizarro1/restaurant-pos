@@ -2,6 +2,7 @@ import {ChangeEvent, useEffect, useMemo} from "react";
 import {useForm, Controller} from "react-hook-form";
 import {useTranslation} from "react-i18next";
 import * as yup from "yup";
+import i18n from "@/lib/i18n.ts";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {toast} from "sonner";
 import {DateValue} from "react-aria-components";
@@ -50,9 +51,9 @@ interface Props {
 
 const validationSchema = yup.object({
   id: yup.string().optional(),
-  employee: yup.object({label: yup.string().required(), value: yup.string().required()}).nullable().required("Required"),
+  employee: yup.object({label: yup.string().required(), value: yup.string().required()}).nullable().required(i18n.t("validation.required")),
   category: yup.string().optional(),
-  title: yup.string().required("Required"),
+  title: yup.string().required(i18n.t("validation.required")),
   expires_at: yup.mixed().nullable().optional(),
   file: yup.mixed().nullable().optional(),
 }).required();

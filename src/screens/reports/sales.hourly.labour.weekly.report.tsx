@@ -261,7 +261,7 @@ export const SalesHourlyLabourWeeklyReport = () => {
     return (
       <ReportsLayout title={t('reports.salesHourlyLabourWeekly')} subtitle={subtitle}>
         <div className="text-center p-6 text-gray-500">
-          No data available for the selected week.
+          {t('reportsScreens.salesHourlyLabourWeekly.noDataAvailable')}
         </div>
       </ReportsLayout>
     );

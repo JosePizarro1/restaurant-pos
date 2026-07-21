@@ -87,7 +87,7 @@ export const InventoryPurchaseViewModal = ({open, purchase, onClose}: Props) => 
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm text-neutral-700">
               <div>
-                <div className="text-neutral-500 text-xs uppercase">Purchase order</div>
+                <div className="text-neutral-500 text-xs uppercase">{t('columns.purchaseOrder')}</div>
                 <div>{viewPurchase.purchase_order ? `PO #${viewPurchase.purchase_order.po_number}` : "—"}</div>
               </div>
               <div>
@@ -95,7 +95,7 @@ export const InventoryPurchaseViewModal = ({open, purchase, onClose}: Props) => 
                 <div>{viewPurchase.created_by?.first_name } {viewPurchase?.created_by?.last_name}</div>
               </div>
               <div>
-                <div className="text-neutral-500 text-xs uppercase">Method</div>
+                <div className="text-neutral-500 text-xs uppercase">{t('columns.method')}</div>
                 <div>{viewPurchase.method ?? "Manual"}</div>
               </div>
               <div>
@@ -174,7 +174,7 @@ export const InventoryPurchaseViewModal = ({open, purchase, onClose}: Props) => 
               </div>
             ) : (
               <div className="text-sm text-neutral-500">
-                No items found for this purchase.
+                {t('modals.noItemsFound')}
               </div>
             )}
           </div>
@@ -261,14 +261,14 @@ export const InventoryPurchaseViewModal = ({open, purchase, onClose}: Props) => 
                       }
                     >
                       <FontAwesomeIcon icon={faDownload} className="mr-1"/>
-                      Download
+                      {t('actions.download')}
                     </Button>
                   </div>
                 ))}
               </div>
             ) : (
               <div className="text-sm text-neutral-500">
-                No documents attached to this purchase.
+                {t('modals.noDocumentsAttached')}
               </div>
             )}
           </div>

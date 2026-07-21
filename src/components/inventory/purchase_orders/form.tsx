@@ -388,7 +388,7 @@ export const InventoryPurchaseOrderForm = ({open, onClose, data}: Props) => {
               <div className="flex-1 flex gap-3 items-end">
                 <div className="flex-1 flex gap-2 items-end">
                   <div className="flex-1">
-                    <label>Supplier</label>
+                    <label>{t('columns.suppliers')}</label>
                     <Controller
                       name="supplier"
                       control={control}
@@ -429,7 +429,7 @@ export const InventoryPurchaseOrderForm = ({open, onClose, data}: Props) => {
 
             <div className="flex gap-3">
               <div className="flex-1">
-                <label>Documents</label>
+                <label>{t('forms.documents')}</label>
                 <input
                   type="file"
                   multiple
@@ -447,9 +447,9 @@ export const InventoryPurchaseOrderForm = ({open, onClose, data}: Props) => {
                   type="button"
                   icon={faPlus}
                   variant="primary"
-                  onClick={() => append({item: null, quantity: 1, price: 0, supplier: null})}
+                    onClick={() => append({item: null, quantity: 1, price: 0, supplier: null})}
                 >
-                  Add item
+                  {t('buttons.addItem')}
                 </Button>
               </div>
 
@@ -512,7 +512,7 @@ export const InventoryPurchaseOrderForm = ({open, onClose, data}: Props) => {
                         />
                       </div>
                       <div className="flex-1">
-                        <label>Supplier override</label>
+                        <label>{t('forms.supplierOverride')}</label>
                         <Controller
                           name={`items.${index}.supplier`}
                           control={control}

@@ -289,7 +289,7 @@ export const VoidsReport = () => {
         <div className="grid grid-cols-3 gap-4">
           {/* Voids by Reason */}
           <div className="overflow-hidden rounded-lg border border-neutral-200">
-            <h3 className="bg-neutral-100 px-6 py-3 text-sm font-semibold text-neutral-700">Voids by Reason</h3>
+            <h3 className="bg-neutral-100 px-6 py-3 text-sm font-semibold text-neutral-700">{t('reportsScreens.voids.voidsByReason')}</h3>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-neutral-200">
                 <thead className="bg-neutral-50">
@@ -304,7 +304,7 @@ export const VoidsReport = () => {
                   {voidsByReason.length === 0 ? (
                     <tr>
                       <td colSpan={4} className="py-6 text-center text-sm text-neutral-500">
-                        No voids by reason
+                        {t('reportsScreens.voids.noVoidsByReason')}
                       </td>
                     </tr>
                   ) : (
@@ -326,12 +326,12 @@ export const VoidsReport = () => {
 
           {/* Voids by Managers */}
           <div className="overflow-hidden rounded-lg border border-neutral-200">
-            <h3 className="bg-neutral-100 px-6 py-3 text-sm font-semibold text-neutral-700">Voids by Managers</h3>
+            <h3 className="bg-neutral-100 px-6 py-3 text-sm font-semibold text-neutral-700">{t('reportsScreens.voids.voidsByManagers')}</h3>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-neutral-200">
                 <thead className="bg-neutral-50">
                   <tr>
-                    <th className="py-3 pl-6 pr-3 text-left text-xs font-semibold text-neutral-700">Manager</th>
+                    <th className="py-3 pl-6 pr-3 text-left text-xs font-semibold text-neutral-700">{t('reportsScreens.voids.manager')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('metrics.count')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('columns.quantity')}</th>
                     <th className="py-3 pr-6 text-right text-xs font-semibold text-neutral-700">{t('columns.amount')}</th>
@@ -341,7 +341,7 @@ export const VoidsReport = () => {
                   {voidsByManager.length === 0 ? (
                     <tr>
                       <td colSpan={4} className="py-6 text-center text-sm text-neutral-500">
-                        No voids by manager
+                        {t('reportsScreens.voids.noVoidsByManager')}
                       </td>
                     </tr>
                   ) : (
@@ -363,12 +363,12 @@ export const VoidsReport = () => {
 
           {/* Voids by Menu Items */}
           <div className="overflow-hidden rounded-lg border border-neutral-200">
-            <h3 className="bg-neutral-100 px-6 py-3 text-sm font-semibold text-neutral-700">Voids by Menu Items</h3>
+            <h3 className="bg-neutral-100 px-6 py-3 text-sm font-semibold text-neutral-700">{t('reportsScreens.voids.voidsByMenuItems')}</h3>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-neutral-200">
                 <thead className="bg-neutral-50">
                   <tr>
-                    <th className="py-3 pl-6 pr-3 text-left text-xs font-semibold text-neutral-700">Menu Item</th>
+                    <th className="py-3 pl-6 pr-3 text-left text-xs font-semibold text-neutral-700">{t('reportsScreens.voids.menuItem')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('metrics.count')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('columns.quantity')}</th>
                     <th className="py-3 pr-6 text-right text-xs font-semibold text-neutral-700">{t('columns.amount')}</th>
@@ -378,7 +378,7 @@ export const VoidsReport = () => {
                   {voidsByMenuItem.length === 0 ? (
                     <tr>
                       <td colSpan={4} className="py-6 text-center text-sm text-neutral-500">
-                        No voids by menu item
+                        {t('reportsScreens.voids.noVoidsByMenuItem')}
                       </td>
                     </tr>
                   ) : (
@@ -409,10 +409,10 @@ export const VoidsReport = () => {
                   <th className="py-3 pl-6 pr-3 text-left text-xs font-semibold text-neutral-700">{t('columns.date')}</th>
                   <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">{t('common:actions.time')}</th>
                   <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">{t('columns.reason')}</th>
-                  <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">Menu Item</th>
+                  <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">{t('reportsScreens.voids.menuItem')}</th>
                   <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('columns.quantity')}</th>
                   <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('metrics.lineTotal')}</th>
-                  <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">Manager</th>
+                  <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">{t('reportsScreens.voids.manager')}</th>
                   <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">{t('metrics.cashier')}</th>
                   <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">Order #</th>
                   <th className="py-3 pr-6 text-left text-xs font-semibold text-neutral-700">{t('columns.comments')}</th>
@@ -475,7 +475,7 @@ export const VoidsReport = () => {
                                         ))}
                                       </div>
                                     ) : (
-                                      <div className="mt-1 text-xs text-neutral-500">No modifiers</div>
+                                      <div className="mt-1 text-xs text-neutral-500">{t('reportsScreens.voids.noModifiers')}</div>
                                     )}
                                   </div>
                                 );

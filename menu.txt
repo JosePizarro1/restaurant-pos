@@ -1,0 +1,177 @@
+=========================================
+                ENTRADAS
+=========================================
+Choclo con queso                         15.00
+Caldo Blanco Warike (Entero)             20.00
+Caldo Blanco Warike (Medio)              15.00
+Caldo de Lomos (solo Viernes)            20.00
+Soltero de queso                         20.00
+Torrejitas (3 unidades)                  12.00
+
+=========================================
+            PLATOS DE FONDO
+=========================================
+Pastel de tallarín + 
+chicharrón de chancho (otros cortes)     35.00
+
+Pastel de Tallarín + Costillar Dorado    42.00
+
+Pastel de papa o Pastel de tallarín + 
+Rocoto Relleno                           35.00
+
+Pastel de papa o Pastel de tallarín + 
+chicharrón de chancho (otros cortes) + 
+sarsa de senccas                         45.00
+
+Pastel de papa o Pastel de tallarín + 
+chicharrón de chancho (panceta) + 
+sarsa de senccas                         50.00
+
+Pastel de papa o pastel de Tallarín + 
+Rocoto relleno + Chicharrón de 
+Chancho (otros cortes)                   49.00
+
+Pastel de papa o pastel de Tallarín + 
+Rocoto relleno + Chicharrón de 
+Chancho (panceta)                        58.00
+
+Pastel de Papa o Pastel de Tallarín + 
+Rocoto Relleno + Sarza dze senccas       43.00
+
+Pastel de Papa o Pastel de tallarín + 
+Rocoto relleno + soltero de queso        45.00
+
+Sarza de Patitas (Entero)                42.00
+Sarza de Patitas (Medio)                 35.00
+Sarza de senccas                         42.00
+Costillar Dorado (Entero)                65.00
+Costillar Dorado (Medio)                 54.00
+Adobo Arequipeño (Solo Domingos)         20.00
+
+=========================================
+             CHICHARRONES
+=========================================
+Chicharrón de Chancho (Entero)
+- Otros Cortes                           55.00
+- Panceta                                65.00
+
+Chicharrón de Chancho (Medio)
+- Otros Cortes                           46.00
+- Panceta                                55.00
+
+Chicharrón de Chancho (Fuente)
+- Otros Cortes                           115.00
+- Panceta                                130.00
+
+=========================================
+               TRIPLES
+=========================================
+MISTI CCORO
+Pastel de papa o Pastel de Tallarín + 
+medio Choclo con Queso o Sarsa de 
+Patitas + Rocoto Relleno + Chicharrón 
+de Chancho (Otros Cortes)                49.00
+o Chicharrón de chancho (Panceta)        58.00
+
+MISTI TAITA
+Pastel de papa o Pastel de Tallarín + 
+medio Choclo con Queso o 
+Sarza de Patitas + Rocoto Relleno + 
+Sarza senccas + Chicharrón 
+de Chancho (Otros Cortes)                63.00
+o Chicharrón de Chancho (Panceta)        69.00
+
+CHACHANI CCORO
+Pastel de papa o Pastel de Tallarín + 
+Costillar Dorado + medio Choclo con 
+queso o Sarza de Patitas + 
+Rocoto Relleno                           56.00
+
+CHACHANI TAITA
+Pastel de papa o Pastel de Tallarín + 
+Costillar Dorado + medio Choclo con 
+queso o Sarza de Patitas + 
+Rocoto Relleno + Sarza senccas           70.00
+
+PICHU PICHU
+Sarsa de senccas + 
+Chicharrón de chancho (otros cortes)     60.00
+o Chicharrón de chancho (Panceta)        70.00
+
+=========================================
+              ESPECIALES
+=========================================
+EL CCALA                                 70.00
+Costillar Dorado + 
+Chicharrón de chancho (otros cortes)
+- Chicharrón de chancho (Panceta)        80.00
+
+EL AMERICANO CCORO                       55.00
+Sarza de patitas + Rocoto Relleno + 
+Pastel de papa o Pastel de tallarín + 
+Arroz verde + Picante del día + Torrejita
+
+EL AMERICANO TAITA                       65.00
+Sarza de patitas + Rocoto Relleno + 
+Pastel de papa o Pastel de tallarín + 
+Arroz verde + Picante del día + Torrejita + 
+chicharrón de chancho (otros cortes)
+
+EL WARIKE                                78.00
+Sarza de patitas + Rocoto Relleno + 
+Pastel de papa o Pastel de tallarín + 
+Arroz verde + Picante del día + 
+Chicharrón de Chancho (Otros cortes) 
++ Medio Choclo con Queso + Torrejita + 
+Sarza de senccas + 1/2 lt de chicha 
+de guiñapo o caldo
+
+LA FURIA DEL LONCCO                      130.00
+Sarza de patitas + Sarza de senccas + 
+Rocoto Relleno + Pastel de papa + 
+Pastel de Tallarín + Arroz Verde + 
+Picante del día + Chicharrón de 
+Chancho (Otros Cortes) + Costillar Dorado 
++ Choclo con Queso + soltero de queso + 
+Torrejita + 1 lt chicha de guiñapo o caldo
+
+=========================================
+               BEBIDAS
+=========================================
+Chicha de Guiñapo x 1 Litro              10.00
+Chicha de Guiñapo Vaso Caporal            8.00
+Chicha de Guiñapo Vaso Cogollo            6.00
+Chicha Morada Warike x 1 L               10.00
+Agua Mineral Personal                     3.00
+Gaseosa Kola Escosesa x 600 ml            7.00
+Gaseosa Kola Escosesa x 1.5 L            12.00
+Gaseosa Kola Escosesa x 2.26 L           15.00
+Gaseosa Coca Cola x 2.5L                 13.00
+Gaseosa Coca Cola x 1.5L                 10.00
+Gaseosa Coca Cola x 1L                    7.00
+Gaseosa Coca Cola x 600ml                 4.00
+Gaseosa Inka Kola x 2.5L                 13.00
+Gaseosa Inka Kola x 1.5L                 10.00
+Gaseosa Inka Kola x 1L                    7.00
+Gaseosa Inka Kola x 600ml                 4.00
+Fanta x 2L                               12.00
+Fanta 600 ml                              4.00
+Cerveza Arequipeña                       12.00
+Cerveza Cuzqueña Malta                   12.00
+Cerveza Cuzqueña Trigo                   12.00
+Cerveza Pilsen                           12.00
+Anis Najar (copita)                       5.00
+Prende y Apaga 
+(Cogollo + copita anisado)                8.00
+Té Piteado                                7.00
+Té solo                                   5.00
+Café                                      7.00
+
+=========================================
+              PORCIONES
+=========================================
+Papa Dorada                              10.00
+Canchita (maíz tostado)                   5.00
+Arroz Blanco                              8.00
+Arroz Verde                              10.00
+Rocoto relleno                           15.00

@@ -68,8 +68,8 @@ export const AdminTables = () => {
     columnHelper.accessor('payment_types', {
       header: t('columns.paymentTypes'),
       cell: info => <div className="flex gap-2 flex-wrap">
-        {info.getValue()?.map((item, index) => (
-          <span className="tag" key={`${item.id}-${index}`}>{item.name}</span>
+        {info.getValue()?.filter(Boolean).map((item: any, index) => (
+          <span className="tag" key={`${item?.id || index}`}>{item?.name || String(item)}</span>
         ))}
       </div>,
       enableColumnFilter: false,
@@ -78,8 +78,8 @@ export const AdminTables = () => {
     columnHelper.accessor('order_types', {
       header: t('columns.orderTypes'),
       cell: info => <div className="flex gap-2 flex-wrap">
-        {info.getValue()?.map((item, index) => (
-          <span className="tag" key={`${item.id}-${index}`}>{item.name}</span>
+        {info.getValue()?.filter(Boolean).map((item: any, index) => (
+          <span className="tag" key={`${item?.id || index}`}>{item?.name || String(item)}</span>
         ))}
       </div>,
       enableColumnFilter: false,

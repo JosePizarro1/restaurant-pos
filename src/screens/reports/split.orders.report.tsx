@@ -90,9 +90,9 @@ export const SplitOrdersReport = () => {
         <table className="min-w-full divide-y divide-neutral-200">
           <thead className="bg-neutral-50">
           <tr>
-            <th className="py-3 pl-6 pr-3 text-left text-sm font-semibold text-neutral-700">Created at</th>
+            <th className="py-3 pl-6 pr-3 text-left text-sm font-semibold text-neutral-700">{t('reportsScreens.splitOrders.createdAt')}</th>
             <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('columns.order')}</th>
-            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">Split #</th>
+            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('reportsScreens.splitOrders.splitNumber')}</th>
             <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('filters.status')}</th>
             <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('filters.table')}</th>
             <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('filters.user')}</th>
@@ -101,7 +101,7 @@ export const SplitOrdersReport = () => {
           <tbody className="divide-y divide-neutral-100 bg-white">
           {rows.length === 0 ? (
             <tr>
-              <td colSpan={6} className="py-6 text-center text-sm text-neutral-500">No split orders for selected range.</td>
+              <td colSpan={6} className="py-6 text-center text-sm text-neutral-500">{t('reportsScreens.splitOrders.noSplitOrders')}</td>
             </tr>
           ) : rows.map((row) => (
             <tr key={row.id}>
@@ -109,7 +109,7 @@ export const SplitOrdersReport = () => {
               <td className="py-3 px-3 text-sm text-neutral-700">{row.invoice_number ? `#${row.invoice_number}` : row.id}</td>
               <td className="py-3 px-3 text-sm text-neutral-700">{row.split ?? "-"}</td>
               <td className="py-3 px-3 text-sm text-neutral-700">{row.status || "-"}</td>
-              <td className="py-3 px-3 text-sm text-neutral-700">{row.table ? `${row.table.name || "Table"} ${row.table.number || ""}`.trim() : "-"}</td>
+              <td className="py-3 px-3 text-sm text-neutral-700">{row.table ? `${row.table.name || t('reportsScreens.splitOrders.table')} ${row.table.number || ""}`.trim() : "-"}</td>
               <td className="py-3 px-3 text-sm text-neutral-700">{`${row.user?.first_name || ""} ${row.user?.last_name || ""}`.trim() || "-"}</td>
             </tr>
           ))}

@@ -43,11 +43,11 @@ export const IssueReturnFilter = () => {
       className="flex flex-col gap-4 items-start w-full"
       target="_blank"
     >
-      <DateRange isRequired label="Select a range" />
+      <DateRange isRequired label={t('filters.selectRange')} />
 
       <div className="w-full flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="issue-return-stores">Stores</label>
+          <label htmlFor="issue-return-stores">{t('reportsFilters.stores')}</label>
           <ReactSelect
             id="issue-return-stores"
             name="stores[]"

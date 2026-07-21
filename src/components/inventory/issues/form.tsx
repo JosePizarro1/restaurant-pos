@@ -605,7 +605,7 @@ export const InventoryIssueForm = ({open, onClose, data}: Props) => {
 
           <div className="flex gap-3">
             <div className="flex-1">
-              <label>Documents</label>
+              <label>{t('forms.documents')}</label>
               <input
                 type="file"
                 multiple
@@ -650,7 +650,7 @@ export const InventoryIssueForm = ({open, onClose, data}: Props) => {
                 variant="primary"
                 onClick={() => append(createEmptyItem())}
               >
-                Add item
+                {t('buttons.addItem')}
               </Button>
               <InputError error={_.get(errors, ["items", "message"])}/>
             </div>
@@ -663,7 +663,7 @@ export const InventoryIssueForm = ({open, onClose, data}: Props) => {
               <div className="flex flex-col mb-3" key={field.id}>
                 <div className="flex gap-3">
                   <div className="flex-1">
-                    <label>Store</label>
+                    <label>{t('columns.store')}</label>
                     <Controller
                       name={`items.${index}.store`}
                       control={control}

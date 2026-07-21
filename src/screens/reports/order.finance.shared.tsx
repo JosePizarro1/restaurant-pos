@@ -159,7 +159,7 @@ export const OrderFinanceReport = ({title, metric, metricHeader}: Props) => {
           <table className="min-w-full divide-y divide-neutral-200">
             <thead className="bg-neutral-50">
             <tr>
-              <th className="py-3 pl-6 pr-3 text-left text-sm font-semibold text-neutral-700">Created at</th>
+              <th className="py-3 pl-6 pr-3 text-left text-sm font-semibold text-neutral-700">{t('reportsScreens.orderFinance.createdAt')}</th>
               <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('columns.order')}</th>
               <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('metrics.cashier')}</th>
               <th className="py-3 px-3 text-right text-sm font-semibold text-neutral-700">{t('metrics.gross')}</th>
@@ -170,7 +170,7 @@ export const OrderFinanceReport = ({title, metric, metricHeader}: Props) => {
             <tbody className="divide-y divide-neutral-100 bg-white">
             {orders.length === 0 ? (
               <tr>
-                <td colSpan={6} className="py-6 text-center text-sm text-neutral-500">No rows found for selected range.</td>
+                <td colSpan={6} className="py-6 text-center text-sm text-neutral-500">{t('reportsScreens.orderFinance.noRowsFound')}</td>
               </tr>
             ) : orders.map((order) => {
               const gross = calculateGross(order);

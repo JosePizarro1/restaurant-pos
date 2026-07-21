@@ -1,0 +1,2 @@
+OPTION IMPORT;
+DEFINE FIELD roles ON user_role TYPE array<string> PERMISSIONS FULL;

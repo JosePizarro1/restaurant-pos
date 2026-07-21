@@ -52,7 +52,7 @@ export const SalesAdvancedFilter = () => {
       className="flex flex-col gap-4 items-start w-full"
       target="_blank"
     >
-      <DateRange isRequired label="Select a range" />
+      <DateRange isRequired label={t('filters.selectRange')} />
 
       <div className="w-full flex flex-col gap-4">
         <div className="flex flex-col gap-2">
@@ -88,7 +88,7 @@ export const SalesAdvancedFilter = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="sales-advanced-tables">Tables</label>
+          <label htmlFor="sales-advanced-tables">{t('reportsFilters.tables')}</label>
           <ReactSelect
             id="sales-advanced-tables"
             name="tables[]"
@@ -130,18 +130,18 @@ export const SalesAdvancedFilter = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label>Tax Filter</label>
+          <label>{t('reportsFilters.taxFilter')}</label>
           <div className="flex flex-col gap-3">
-            <Checkbox name="with_tax" value="1" label="With Tax" />
-            <Checkbox name="without_tax" value="1" label="Without Tax" />
+            <Checkbox name="with_tax" value="1" label={t('reportsFilters.withTax')} />
+            <Checkbox name="without_tax" value="1" label={t('reportsFilters.withoutTax')} />
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="sales-advanced-discounts">Discount Filter</label>
+          <label htmlFor="sales-advanced-discounts">{t('reportsFilters.discountFilter')}</label>
           <div className="flex flex-col gap-3 mb-2">
-            <Checkbox name="with_discount" value="1" label="With Discount" />
-            <Checkbox name="without_discount" value="1" label="Without Discount" />
+            <Checkbox name="with_discount" value="1" label={t('reportsFilters.withDiscount')} />
+            <Checkbox name="without_discount" value="1" label={t('reportsFilters.withoutDiscount')} />
           </div>
           <ReactSelect
             id="sales-advanced-discounts"
@@ -149,7 +149,7 @@ export const SalesAdvancedFilter = () => {
             isMulti
             isLoading={loadingDiscounts}
             className="w-full"
-            placeholder="Select specific discounts (optional)"
+            placeholder={t('reportsFilters.selectSpecificDiscounts')}
             options={(discountsData?.data || [])
               .map(discount => toOption(discount, discount.name))
               .filter(notNull)}
@@ -157,7 +157,7 @@ export const SalesAdvancedFilter = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="sales-advanced-payment-types">Payment Types</label>
+          <label htmlFor="sales-advanced-payment-types">{t('reportsFilters.paymentTypes')}</label>
           <ReactSelect
             id="sales-advanced-payment-types"
             name="payment_types[]"
@@ -199,39 +199,39 @@ export const SalesAdvancedFilter = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="sales-advanced-menu-items-match">Menu Items Match</label>
+          <label htmlFor="sales-advanced-menu-items-match">{t('reportsFilters.menuItemsMatch')}</label>
           <select
             id="sales-advanced-menu-items-match"
             name="menu_items_match"
             className="form-control"
             defaultValue="any"
           >
-            <option value="any">Any selected item</option>
-            <option value="all">All selected items</option>
+            <option value="any">{t('reportsFilters.anySelectedItem')}</option>
+            <option value="all">{t('reportsFilters.allSelectedItems')}</option>
           </select>
         </div>
 
         <div className="flex flex-col gap-2">
-          <label>Status Filters</label>
+          <label>{t('reportsFilters.statusFilters')}</label>
           <div className="flex flex-col gap-3">
-            <Checkbox name="refund" value="1" label="Refund" />
-            <Checkbox name="merged" value="1" label="Merged" />
-            <Checkbox name="cancelled" value="1" label="Cancelled" />
-            <Checkbox name="split" value="1" label="Split" />
+            <Checkbox name="refund" value="1" label={t('reportsFilters.refund')} />
+            <Checkbox name="merged" value="1" label={t('reportsFilters.merged')} />
+            <Checkbox name="cancelled" value="1" label={t('reportsFilters.cancelled')} />
+            <Checkbox name="split" value="1" label={t('reportsFilters.split')} />
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
           <label>{t('labels.displayOptions')}</label>
           <div className="flex flex-col gap-3">
-            <Checkbox name="show_menu_items" value="1" label="Show Menu Items for Details" />
-            <Checkbox name="show_details" value="1" label="Show Details" />
+            <Checkbox name="show_menu_items" value="1" label={t('reportsFilters.showMenuItemsForDetails')} />
+            <Checkbox name="show_details" value="1" label={t('reportsFilters.showDetails')} />
           </div>
         </div>
 
         <div className="flex flex-row gap-3">
           <div className="flex flex-col flex-1">
-            <label htmlFor="sales-advanced-sort-by">Sort result by</label>
+            <label htmlFor="sales-advanced-sort-by">{t('reportsFilters.sortResultBy')}</label>
             <select
               id="sales-advanced-sort-by"
               name="sortBy"
@@ -239,21 +239,21 @@ export const SalesAdvancedFilter = () => {
               defaultValue="any"
             >
               <option value="">{t('labels.default')}</option>
-              {['Invoice', 'Date', 'Status', 'Cashier', 'Order taker', 'Total'].map(item => (
+              {[t('reportsFilters.invoice'), t('reportsFilters.date'), t('reportsFilters.status'), t('reportsFilters.cashier'), t('reportsFilters.orderTaker'), t('reportsFilters.total')].map(item => (
                 <option value={item}>{item}</option>
               ))}
             </select>
           </div>
 
           <div className="flex flex-col flex-1">
-            <label htmlFor="sales-advanced-sort-by">Sort result by</label>
+            <label htmlFor="sales-advanced-sort-by">{t('reportsFilters.sortDirection')}</label>
             <select
               id="sales-advanced-sort-by"
               name="sortDirection"
               className="form-control"
               defaultValue="any"
             >
-              {['Ascending', 'Descending'].map(item => (
+              {[t('reportsFilters.ascending'), t('reportsFilters.descending')].map(item => (
                 <option value={item}>{item}</option>
               ))}
             </select>

@@ -86,8 +86,7 @@ export const Sidebar = () => {
     { title: t('sidebar.orders'), icon: <FontAwesomeIcon icon={faList} size="lg"/>, link: ORDERS, role: 'Orders' },
     { title: t('sidebar.summary'), icon: <FontAwesomeIcon icon={faClipboardList} size="lg"/>, link: SUMMARY, role: 'Summary' },
     { title: t('sidebar.kitchen'), icon: <FontAwesomeIcon icon={faUtensils} size="lg"/>, link: KITCHEN, role: 'Kitchen' },
-    // { title: t('sidebar.orderDisplay'), icon: <FontAwesomeIcon icon={faDisplay} size="lg"/>, link: ORDER_DISPLAY, role: 'Order Display' },
-    { title: t('sidebar.delivery'), icon: <FontAwesomeIcon icon={faMotorcycle} size="lg"/>, link: DELIVERY, role: 'Delivery' },
+    // { title: t('sidebar.delivery'), icon: <FontAwesomeIcon icon={faMotorcycle} size="lg"/>, link: DELIVERY, role: 'Delivery' },
     { title: t('sidebar.closing'), icon: <FontAwesomeIcon icon={faStore} size="lg"/>, link: CLOSING, role: 'Closing' },
     { title: t('sidebar.inventory'), icon: <FontAwesomeIcon icon={faWarehouse} size="lg"/>, link: INVENTORY, role: 'Inventory' },
     { title: t('sidebar.manage'), icon: <FontAwesomeIcon icon={faGear} size="lg"/>, link: ADMIN, role: 'Admin' },
@@ -101,13 +100,9 @@ export const Sidebar = () => {
   // Filter sidebar items based on user roles
   const userRoles = getUserModules(page.user);
   const sidebarItems = allSidebarItems.filter(item => {
-    return true; // show all pages and handle the auth to manage pages permissions
-
-    // If user has no roles, show nothing (or you could show all if that's the desired behavior)
-    if (userRoles.length === 0) {
-      // return false;
+    if (!userRoles || userRoles.length === 0) {
+      return false;
     }
-    // Check if user has the required role for this item
     return userRoles.includes(item.role);
   });
 

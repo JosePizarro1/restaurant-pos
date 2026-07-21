@@ -75,11 +75,11 @@ export const InventoryPurchaseReturnViewModal = ({open, purchaseReturn, onClose}
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm text-neutral-700">
               <div>
-                <div className="text-neutral-500 text-xs uppercase">Purchase invoice</div>
+                <div className="text-neutral-500 text-xs uppercase">{t('columns.purchaseInvoice')}</div>
                 <div>{viewReturn.purchase ? `Invoice #${viewReturn.purchase.invoice_number}` : "—"}</div>
               </div>
               <div>
-                <div className="text-neutral-500 text-xs uppercase">Supplier</div>
+                <div className="text-neutral-500 text-xs uppercase">{t('columns.suppliers')}</div>
                 <div>{viewReturn.purchase?.supplier?.name ?? "—"}</div>
               </div>
               <div>
@@ -90,8 +90,8 @@ export const InventoryPurchaseReturnViewModal = ({open, purchaseReturn, onClose}
           </div>
 
           <div className="bg-white rounded-xl shadow border border-neutral-200 p-4">
-            <div className="text-sm font-semibold text-neutral-800 mb-3">
-              Items
+              <div className="text-sm font-semibold text-neutral-800 mb-3">
+              {t('tabs.items')}
             </div>
             {viewReturn.items && viewReturn.items.length > 0 ? (
               <div className="max-h-64 overflow-auto divide-y divide-neutral-200">
@@ -119,7 +119,7 @@ export const InventoryPurchaseReturnViewModal = ({open, purchaseReturn, onClose}
               </div>
             ) : (
               <div className="text-sm text-neutral-500">
-                No items found for this return.
+                {t('modals.noItemsFound')}
               </div>
             )}
           </div>
@@ -163,14 +163,14 @@ export const InventoryPurchaseReturnViewModal = ({open, purchaseReturn, onClose}
                       }
                     >
                       <FontAwesomeIcon icon={faDownload} className="mr-1"/>
-                      Download
+                      {t('actions.download')}
                     </Button>
                   </div>
                 ))}
               </div>
             ) : (
               <div className="text-sm text-neutral-500">
-                No documents attached to this purchase return.
+                {t('modals.noDocumentsAttached')}
               </div>
             )}
           </div>

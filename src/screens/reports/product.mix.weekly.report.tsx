@@ -337,7 +337,7 @@ export const ProductMixWeeklyReport = () => {
             {orderTakerMetrics.length === 0 && (
               <tr>
                 <td colSpan={dayHeaders.length * 2 + 3} className="py-6 text-center text-sm text-neutral-500">
-                  No data available for the selected filters
+                  {t('reportsScreens.product.mixWeekly.noDataAvailable')}
                 </td>
               </tr>
             )}

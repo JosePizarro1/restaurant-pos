@@ -2,6 +2,7 @@ import {useEffect, useMemo} from "react";
 import {useForm} from "react-hook-form";
 import {useTranslation} from "react-i18next";
 import * as yup from "yup";
+import i18n from "@/lib/i18n.ts";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {toast} from "sonner";
 import {EmployeePerformanceNote} from "@/api/model/employee_performance_note.ts";
@@ -40,10 +41,10 @@ interface Props {
 
 const validationSchema = yup.object({
   id: yup.string().optional(),
-  employee: yup.object({label: yup.string().required(), value: yup.string().required()}).nullable().required("Required"),
-  type: yup.string().required("Required"),
-  title: yup.string().required("Required"),
-  content: yup.string().required("Required"),
+  employee: yup.object({label: yup.string().required(), value: yup.string().required()}).nullable().required(i18n.t("validation.required")),
+  type: yup.string().required(i18n.t("validation.required")),
+  title: yup.string().required(i18n.t("validation.required")),
+  content: yup.string().required(i18n.t("validation.required")),
   severity: yup.string().optional(),
   visible_to_employee: yup.boolean().optional(),
 }).required();

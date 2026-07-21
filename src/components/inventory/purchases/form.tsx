@@ -620,7 +620,7 @@ export const InventoryPurchaseForm = ({open, onClose, data}: Props) => {
                 />
               </div>
               <div className="flex-1">
-                <label>Method</label>
+                <label>{t('forms.method')}</label>
                 <Controller
                   name="method"
                   control={control}
@@ -657,7 +657,7 @@ export const InventoryPurchaseForm = ({open, onClose, data}: Props) => {
             {isPurchaseOrderMethod && (
               <div className="flex gap-2 items-end">
                 <div className="flex-1">
-                  <label>Purchase order</label>
+                  <label>{t('columns.purchaseOrder')}</label>
                   <Controller
                     name="purchase_order"
                     control={control}
@@ -702,7 +702,7 @@ export const InventoryPurchaseForm = ({open, onClose, data}: Props) => {
                 />
               </div>
               <div className="flex-1">
-                <label>Documents</label>
+                <label>{t('forms.documents')}</label>
                 <input
                   type="file"
                   multiple
@@ -910,7 +910,7 @@ export const InventoryPurchaseForm = ({open, onClose, data}: Props) => {
                         />
                       </div>
                       <div className="flex-1">
-                        <label>Supplier</label>
+                        <label>{t('columns.suppliers')}</label>
                         <Controller
                           name={`items.${index}.supplier`}
                           control={control}
@@ -928,7 +928,7 @@ export const InventoryPurchaseForm = ({open, onClose, data}: Props) => {
                         <InputError error={_.get(errors, ["items", index, "supplier", "message"])}/>
                       </div>
                       <div className="flex-1">
-                        <label>Store</label>
+                        <label>{t('columns.store')}</label>
                         <Controller
                           name={`items.${index}.store`}
                           control={control}

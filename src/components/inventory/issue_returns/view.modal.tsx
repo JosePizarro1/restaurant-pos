@@ -94,8 +94,8 @@ export const InventoryIssueReturnViewModal = ({open, issueReturn, onClose}: Prop
           </div>
 
           <div className="bg-white rounded-xl shadow border border-neutral-200 p-4">
-            <div className="text-sm font-semibold text-neutral-800 mb-3">
-              Items
+              <div className="text-sm font-semibold text-neutral-800 mb-3">
+              {t('tabs.items')}
             </div>
             {viewReturn.items && viewReturn.items.length > 0 ? (
               <div className="max-h-64 overflow-auto divide-y divide-neutral-200">
@@ -124,7 +124,7 @@ export const InventoryIssueReturnViewModal = ({open, issueReturn, onClose}: Prop
               </div>
             ) : (
               <div className="text-sm text-neutral-500">
-                No items found for this issue return.
+                {t('modals.noItemsFound')}
               </div>
             )}
           </div>
@@ -168,14 +168,14 @@ export const InventoryIssueReturnViewModal = ({open, issueReturn, onClose}: Prop
                       }
                     >
                       <FontAwesomeIcon icon={faDownload} className="mr-1"/>
-                      Download
+                      {t('actions.download')}
                     </Button>
                   </div>
                 ))}
               </div>
             ) : (
               <div className="text-sm text-neutral-500">
-                No documents attached to this issue return.
+                {t('modals.noDocumentsAttached')}
               </div>
             )}
           </div>

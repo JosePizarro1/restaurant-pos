@@ -291,12 +291,12 @@ export const OrderLifecycleReport = () => {
         <div className="border rounded-lg p-4 bg-neutral-50">
           <div className="text-sm text-neutral-500">{t('columns.order')}</div>
           <div className="text-xl font-semibold">{state.order.invoice_number ? `#${state.order.invoice_number}` : state.order.id.toString()}</div>
-          <div className="text-sm text-neutral-600 mt-1">Status: {state.order.status}</div>
+          <div className="text-sm text-neutral-600 mt-1">{t('reportsScreens.orderLifecycle.status')}: {state.order.status}</div>
         </div>
 
         <div className="space-y-3">
           {events.length === 0 ? (
-            <div className="py-6 text-center text-sm text-neutral-500 border rounded-lg">No lifecycle events found for this order.</div>
+            <div className="py-6 text-center text-sm text-neutral-500 border rounded-lg">{t('reportsScreens.orderLifecycle.noEventsFound')}</div>
           ) : events.map((event) => (
             <div key={event.key} className="border rounded-lg p-4 flex items-start gap-3">
               <div className="h-8 w-8 rounded-full bg-neutral-100 flex items-center justify-center">

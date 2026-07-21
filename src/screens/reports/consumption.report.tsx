@@ -339,7 +339,7 @@ export const ConsumptionReport = () => {
                 {consumptionData.length === 0 ? (
                   <tr>
                     <td colSpan={9} className="py-6 text-center text-sm text-neutral-500">
-                      No consumption data found for the selected filters
+                      {t('reportsScreens.consumption.noDataFound')}
                     </td>
                   </tr>
                 ) : (

@@ -397,7 +397,7 @@ export const InventoryWasteForm = ({open, onClose, data}: Props) => {
 
           <div className="flex gap-3">
             <div className="flex-1">
-              <label>Documents</label>
+              <label>{t('forms.documents')}</label>
               <input
                 type="file"
                 multiple
@@ -425,7 +425,7 @@ export const InventoryWasteForm = ({open, onClose, data}: Props) => {
                   issue_item_id: undefined,
                 })}
               >
-                Add item
+                {t('buttons.addItem')}
               </Button>
             </div>
 
@@ -447,7 +447,7 @@ export const InventoryWasteForm = ({open, onClose, data}: Props) => {
                   
                   <div className="flex gap-3">
                     <div className="flex-1">
-                      <label>Source type</label>
+                      <label>{t('forms.sourceType')}</label>
                       <Controller
                         name={`items.${index}.source_type`}
                         control={control}

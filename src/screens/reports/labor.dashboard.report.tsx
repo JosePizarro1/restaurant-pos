@@ -99,7 +99,7 @@ export const LaborDashboardReport = () => {
               useMesh
             />
           ) : (
-            <div className="h-full flex items-center justify-center text-neutral-500">No trend data</div>
+            <div className="h-full flex items-center justify-center text-neutral-500">{t('reportsScreens.labor.dashboard.noTrendData')}</div>
           )}
         </div>
       </div>

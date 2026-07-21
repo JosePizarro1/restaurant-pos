@@ -18,7 +18,7 @@ export const CashClosingFilter = () => {
     >
       <div className="w-full">
         <DatePicker
-          label="Select date"
+          label={t('reportsFilters.selectDate')}
           name="date"
           value={selectedDate}
           onChange={setSelectedDate}

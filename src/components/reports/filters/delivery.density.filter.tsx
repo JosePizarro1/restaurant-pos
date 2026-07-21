@@ -97,7 +97,7 @@ export const DeliveryDensityFilter = () => {
       className="flex flex-col gap-4 items-start w-full"
       target="_blank"
     >
-      <DateRange isRequired label="Select a range" />
+      <DateRange isRequired label={t('filters.selectRange')} />
 
       <div className="w-full flex flex-col gap-4">
         <div className="flex flex-col gap-2">
@@ -115,7 +115,7 @@ export const DeliveryDensityFilter = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="delivery-density-payment-types">Payment Types</label>
+          <label htmlFor="delivery-density-payment-types">{t('reportsFilters.paymentTypes')}</label>
           <ReactSelect
             id="delivery-density-payment-types"
             name="payment_types[]"
@@ -143,28 +143,28 @@ export const DeliveryDensityFilter = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label>Status Filters</label>
+          <label>{t('reportsFilters.statusFilters')}</label>
           <div className="flex flex-col gap-3">
-            <Checkbox name="refund" value="1" label="Refund" />
-            <Checkbox name="merged" value="1" label="Merged" />
-            <Checkbox name="cancelled" value="1" label="Cancelled" />
-            <Checkbox name="split" value="1" label="Split" />
-            <Checkbox name="paid" value="1" label="Paid" />
-            <Checkbox name="pending" value="1" label="Pending" />
-            <Checkbox name="in_progress" value="1" label="In Progress" />
+            <Checkbox name="refund" value="1" label={t('reportsFilters.refund')} />
+            <Checkbox name="merged" value="1" label={t('reportsFilters.merged')} />
+            <Checkbox name="cancelled" value="1" label={t('reportsFilters.cancelled')} />
+            <Checkbox name="split" value="1" label={t('reportsFilters.split')} />
+            <Checkbox name="paid" value="1" label={t('reportsFilters.paid')} />
+            <Checkbox name="pending" value="1" label={t('reportsFilters.pending')} />
+            <Checkbox name="in_progress" value="1" label={t('reportsFilters.inProgress')} />
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
           <label>{t('labels.displayOptions')}</label>
           <div className="flex flex-col gap-3">
-            <Checkbox name="show_menu_items" value="1" label="Show Menu Items" />
-            <Checkbox name="show_details" value="1" label="Show Details" />
+            <Checkbox name="show_menu_items" value="1" label={t('reportsFilters.showMenuItems')} />
+            <Checkbox name="show_details" value="1" label={t('reportsFilters.showDetails')} />
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="delivery-density-sort-by">Sort result by</label>
+          <label htmlFor="delivery-density-sort-by">{t('reportsFilters.sortResultBy')}</label>
           <select
             id="delivery-density-sort-by"
             name="sortBy"
@@ -172,28 +172,28 @@ export const DeliveryDensityFilter = () => {
             defaultValue=""
           >
             <option value="">{t('labels.default')}</option>
-            {["Invoice", "Date", "Status", "Total", "Area"].map(item => (
+            {[t('reportsFilters.invoice'), t('reportsFilters.date'), t('reportsFilters.status'), t('reportsFilters.total'), t('reportsFilters.area')].map(item => (
               <option key={item} value={item}>{item}</option>
             ))}
           </select>
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="delivery-density-sort-direction">Sort direction</label>
+          <label htmlFor="delivery-density-sort-direction">{t('reportsFilters.sortDirection')}</label>
           <select
             id="delivery-density-sort-direction"
             name="sortDirection"
             className="form-control"
-            defaultValue="Descending"
+            defaultValue={t('reportsFilters.descending')}
           >
-            {["Ascending", "Descending"].map(item => (
+            {[t('reportsFilters.ascending'), t('reportsFilters.descending')].map(item => (
               <option key={item} value={item}>{item}</option>
             ))}
           </select>
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="delivery-density-areas">Areas</label>
+          <label htmlFor="delivery-density-areas">{t('reportsFilters.areas')}</label>
           <ReactSelect
             id="delivery-density-areas"
             name="areas[]"

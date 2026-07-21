@@ -99,5 +99,25 @@
     "description": "The page you're looking for doesn't exist or has been moved.",
     "backToMenu": "Back to menu"
   },
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "csvUploader": {
+    "defaultTitle": "Upload records using CSV",
+    "noHeaders": "No headers found in CSV.",
+    "parseFailed": "Failed to read or parse CSV file.",
+    "uploadFirst": "Please upload a CSV file first.",
+    "mapAllFields": "Please map all fields before creating records.",
+    "rowFailed": "Failed to create this row.",
+    "processed": "Processed {{count}} rows. Success: {{success}}.",
+    "failed": "Failed: {{count}}",
+    "downloadTemplate": "Download template",
+    "uploadCsv": "Upload CSV file",
+    "currentFile": "Current file:",
+    "pipeHint": "Use pipe operator \"|\" for multiple values. For example \"store 1|store 2\" etc...",
+    "columnMapping": "Column Mapping",
+    "notMapped": "-- Not mapped --",
+    "mapAllFieldsWarning": "Map all fields before creating records.",
+    "rows": "Rows",
+    "creating": "Creating...",
+    "create": "Create"
+  }
 }

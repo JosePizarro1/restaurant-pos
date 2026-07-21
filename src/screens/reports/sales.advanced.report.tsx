@@ -609,18 +609,18 @@ export const SalesAdvancedReport = () => {
                   <>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('columns.items')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('columns.covers')}</th>
-                    <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">Sale w/o Tax</th>
-                    <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">Taxes</th>
-                    <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">Tip</th>
-                    <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">Service Charges</th>
+                    <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('reportsScreens.salesAdvanced.saleNoTax')}</th>
+                    <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('reportsScreens.salesAdvanced.taxes')}</th>
+                    <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('reportsScreens.salesAdvanced.tip')}</th>
+                    <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('reportsScreens.salesAdvanced.serviceCharges')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('metrics.discounts')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('metrics.coupons')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('labels.amountDue')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('labels.amountCollected')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('metrics.changeDue')}</th>
-                    <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">Payment Breakdown</th>
+                    <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">{t('reportsScreens.salesAdvanced.paymentBreakdown')}</th>
                     <th className="py-3 px-3 text-right text-xs font-semibold text-neutral-700">{t('metrics.net')}</th>
-                    <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">Notes</th>
+                    <th className="py-3 px-3 text-left text-xs font-semibold text-neutral-700">{t('reportsScreens.salesAdvanced.notes')}</th>
                   </>
                 )}
                 {!filters.showDetails && (
@@ -780,7 +780,7 @@ export const SalesAdvancedReport = () => {
               {filteredOrders.length === 0 && (
                 <tr>
                   <td colSpan={tableColSpan} className="py-6 text-center text-sm text-neutral-500">
-                    No orders found for the selected filters.
+                    {t('reportsScreens.salesAdvanced.noOrdersFound')}
                   </td>
                 </tr>
               )}

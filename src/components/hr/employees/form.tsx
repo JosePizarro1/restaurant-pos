@@ -2,6 +2,7 @@ import {useEffect, useMemo, useState} from "react";
 import {useForm, Controller} from "react-hook-form";
 import {useTranslation} from "react-i18next";
 import * as yup from "yup";
+import i18n from "@/lib/i18n.ts";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {toast} from "sonner";
 import {DateValue} from "react-aria-components";
@@ -58,9 +59,9 @@ const optionSchema = yup.object({label: yup.string().required(), value: yup.stri
 
 const validationSchema = yup.object({
   id: yup.string().optional(),
-  employee_number: yup.string().required("Required"),
-  first_name: yup.string().required("Required"),
-  last_name: yup.string().required("Required"),
+  employee_number: yup.string().required(i18n.t("validation.required")),
+  first_name: yup.string().required(i18n.t("validation.required")),
+  last_name: yup.string().required(i18n.t("validation.required")),
   user: optionSchema,
   department: optionSchema,
   position: optionSchema,

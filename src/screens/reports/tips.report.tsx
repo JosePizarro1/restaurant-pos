@@ -33,14 +33,14 @@ export const TipsReport = () => {
   const [distributions, setDistributions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [shiftName, setShiftName] = useState<string>("All shifts");
+  const [shiftName, setShiftName] = useState<string>(t('reportsScreens.tips.allShifts'));
   const filters = useMemo(parseFilters, []);
 
   const subtitle = useMemo(() => {
     const datePart = filters.startDate && filters.endDate ? `${filters.startDate} to ${filters.endDate}` : "All dates";
-    const shiftPart = shiftName || "All shifts";
+    const shiftPart = shiftName || t('reportsScreens.tips.allShifts');
     return `${datePart} | ${shiftPart}`;
-  }, [filters.startDate, filters.endDate, shiftName]);
+  }, [filters.startDate, filters.endDate, shiftName, t]);
 
   useEffect(() => {
     queryRef.current = db.query;
@@ -56,7 +56,7 @@ export const TipsReport = () => {
           const [shiftRows] = await queryRef.current(`SELECT name FROM ${Tables.shifts} WHERE id = $id LIMIT 1`, { id: toRecordId(filters.shiftId) });
           setShiftName(shiftRows?.[0]?.name || "Selected shift");
         } else {
-          setShiftName("All shifts");
+          setShiftName(t('reportsScreens.tips.allShifts'));
         }
 
         const conditions: string[] = [];
@@ -126,11 +126,11 @@ export const TipsReport = () => {
     <ReportsLayout title={t('titles.tips')} subtitle={subtitle}>
       <div className="grid grid-cols-2 gap-4 mb-5">
         <div className="border rounded-lg p-4 bg-neutral-50">
-          <div className="text-sm text-neutral-500">Total tips</div>
+          <div className="text-sm text-neutral-500">{t('reportsScreens.tips.totalTips')}</div>
           <div className="text-2xl font-semibold">{withCurrency(totalTips)}</div>
         </div>
         <div className="border rounded-lg p-4 bg-neutral-50">
-          <div className="text-sm text-neutral-500">Saved distributions</div>
+          <div className="text-sm text-neutral-500">{t('reportsScreens.tips.savedDistributions')}</div>
           <div className="text-2xl font-semibold">{totalDistributions}</div>
         </div>
       </div>
@@ -153,7 +153,7 @@ export const TipsReport = () => {
               ))
             ) : (
               <tr>
-                <td colSpan={2} className="py-6 text-center text-sm text-neutral-500">No tips found for selected filters.</td>
+                <td colSpan={2} className="py-6 text-center text-sm text-neutral-500">{t('reportsScreens.tips.noTipsFound')}</td>
               </tr>
             )}
           </tbody>

@@ -117,7 +117,7 @@ export const ProductMixWeeklyReportFilter = () => {
       } catch (err) {
         console.error("Failed to load weeks:", err);
         if (isMounted) {
-          setError("Unable to load weeks");
+          setError(t('reportsFilters.unableToLoadWeeks'));
         }
       } finally {
         if (isMounted) {
@@ -150,7 +150,7 @@ export const ProductMixWeeklyReportFilter = () => {
       target="_blank"
     >
       <div className="w-full flex flex-col gap-2">
-        <label htmlFor="product-mix-weekly-week">Week</label>
+          <label htmlFor="product-mix-weekly-week">{t('reportsFilters.week')}</label>
         <select
           id="product-mix-weekly-week"
           name="week"
@@ -161,11 +161,11 @@ export const ProductMixWeeklyReportFilter = () => {
           required
         >
           {!loading && !weeks.length && (
-            <option>No weeks available</option>
+            <option>{t('reportsFilters.noWeeksAvailable')}</option>
           )}
           {weekOptions}
         </select>
-        {loading && <p className="text-sm text-gray-500">Loading weeks...</p>}
+        {loading && <p className="text-sm text-gray-500">{t('reportsFilters.loadingWeeks')}</p>}
         {error && <p className="text-sm text-danger-600">{error}</p>}
       </div>
 
@@ -235,7 +235,7 @@ export const ProductMixWeeklyReportFilter = () => {
         type="submit"
         disabled={!selectedWeek}
       >
-        Generate
+        {t('filters.generate')}
       </Button>
     </form>
   );

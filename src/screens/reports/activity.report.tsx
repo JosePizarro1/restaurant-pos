@@ -116,22 +116,22 @@ export const ActivityReport = () => {
           <tr>
             <th className="py-3 pl-6 pr-3 text-left text-sm font-semibold text-neutral-700">{t('common:actions.time')}</th>
             <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('filters.user')}</th>
-            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">Role</th>
-            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">Shift</th>
+            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('reportsScreens.activity.role')}</th>
+            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('reportsScreens.activity.shift')}</th>
             <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('columns.module')}</th>
             <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('common:table.page')}</th>
-            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">Auth</th>
-            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">Manager</th>
-            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">Manager Role</th>
+            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('reportsScreens.activity.auth')}</th>
+            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('reportsScreens.activity.manager')}</th>
+            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('reportsScreens.activity.managerRole')}</th>
             {/* <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">Coords</th> */}
-            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">Payload</th>
+            <th className="py-3 px-3 text-left text-sm font-semibold text-neutral-700">{t('reportsScreens.activity.payload')}</th>
             <th className="py-3 pr-6 text-left text-sm font-semibold text-neutral-700">{t('columns.device')}</th>
           </tr>
           </thead>
           <tbody className="divide-y divide-neutral-100 bg-white">
           {rows.length === 0 ? (
             <tr>
-              <td colSpan={12} className="py-6 text-center text-sm text-neutral-500">No activity logs for selected range.</td>
+              <td colSpan={12} className="py-6 text-center text-sm text-neutral-500">{t('reportsScreens.activity.noActivityLogs')}</td>
             </tr>
           ) : rows.map((row) => (
             <tr key={row.id}>

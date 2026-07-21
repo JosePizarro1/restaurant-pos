@@ -298,7 +298,7 @@ const DataTable = ({
             )) : (
               <tr>
                 <td colSpan={columns.length} className="py-8 text-center text-sm text-neutral-500">
-                  No records found
+                  {t('reportsScreens.inventoryDash.noRecordsFound')}
                 </td>
               </tr>
             )}
@@ -829,7 +829,7 @@ export const InventoryDashboardReport = () => {
           <h2 className="text-2xl font-bold mb-4 text-neutral-700">{t('labels.keyMetrics')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-4">
             <KPIMetricWidget
-              title="Total Purchases"
+              title={t('reportsScreens.inventoryDash.totalPurchases')}
               value={withCurrency(kpis.totalPurchases)}
               gradientFrom="from-primary-100"
               gradientTo="primary-200"
@@ -838,7 +838,7 @@ export const InventoryDashboardReport = () => {
               labelColor="text-primary-700"
             />
             <KPIMetricWidget
-              title="Purchase Returns"
+              title={t('reportsScreens.inventoryDash.purchaseReturns')}
               value={withCurrency(kpis.totalPurchaseReturns)}
               gradientFrom="from-info-100"
               gradientTo="info-200"
@@ -847,7 +847,7 @@ export const InventoryDashboardReport = () => {
               labelColor="text-info-700"
             />
             <KPIMetricWidget
-              title="Total Issues"
+              title={t('reportsScreens.inventoryDash.totalIssues')}
               value={withCurrency(kpis.totalIssues)}
               gradientFrom="from-warning-100"
               gradientTo="warning-200"
@@ -856,7 +856,7 @@ export const InventoryDashboardReport = () => {
               labelColor="text-warning-700"
             />
             <KPIMetricWidget
-              title="Issue Returns"
+              title={t('reportsScreens.inventoryDash.issueReturns')}
               value={formatNumber(kpis.totalIssueReturns)}
               gradientFrom="from-success-100"
               gradientTo="success-200"
@@ -865,7 +865,7 @@ export const InventoryDashboardReport = () => {
               labelColor="text-success-700"
             />
             <KPIMetricWidget
-              title="Wastes"
+              title={t('reportsScreens.inventoryDash.wastes')}
               value={formatNumber(kpis.totalWastes)}
               gradientFrom="from-danger-100"
               gradientTo="danger-200"
@@ -938,7 +938,7 @@ export const InventoryDashboardReport = () => {
             className="w-full"
             defaultSelectedKey={storeStock[0]?.storeName || ''}
           >
-            <TabList aria-label="Store tabs" className="flex flex-row gap-3 mb-4">
+              <TabList aria-label={t('reportsScreens.inventoryDash.storeTabs')} className="flex flex-row gap-3 mb-4">
               {storeStock.map(store => (
                 <Tab
                   activeClass="bg-neutral-900 text-warning-500"
@@ -971,7 +971,7 @@ export const InventoryDashboardReport = () => {
                       )) : (
                         <tr>
                           <td colSpan={4} className="py-8 text-center text-sm text-neutral-500">
-                            No stock data for this store
+                            {t('reportsScreens.inventoryDash.noStockDataForStore')}
                           </td>
                         </tr>
                       )}
@@ -982,7 +982,7 @@ export const InventoryDashboardReport = () => {
             ))}
             {storeStock.length === 0 && (
               <div className="py-12 text-center text-sm text-neutral-500">
-                No store stock data available
+                {t('reportsScreens.inventoryDash.noStoreStockData')}
               </div>
             )}
           </Tabs>
@@ -990,7 +990,7 @@ export const InventoryDashboardReport = () => {
 
         {/* Purchase Records */}
         <DataTable
-          title="Latest Purchases"
+          title={t('reportsScreens.inventoryDash.latestPurchases')}
           icon={ShoppingCart}
           color="primary"
           columns={[
@@ -1008,7 +1008,7 @@ export const InventoryDashboardReport = () => {
 
         {/* Purchase Returns Records */}
         <DataTable
-          title="Latest Purchase Returns"
+          title={t('reportsScreens.inventoryDash.latestPurchaseReturns')}
           icon={RotateCcw}
           color="info"
           columns={[
@@ -1026,7 +1026,7 @@ export const InventoryDashboardReport = () => {
 
         {/* Issues Records */}
         <DataTable
-          title="Latest Issues"
+          title={t('reportsScreens.inventoryDash.latestIssues')}
           icon={Package}
           color="warning"
           columns={[
@@ -1045,7 +1045,7 @@ export const InventoryDashboardReport = () => {
 
         {/* Issue Returns Records */}
         <DataTable
-          title="Latest Issue Returns"
+          title={t('reportsScreens.inventoryDash.latestIssueReturns')}
           icon={ArrowLeftRight}
           color="success"
           columns={[
@@ -1064,14 +1064,14 @@ export const InventoryDashboardReport = () => {
 
         {/* Wastes Records */}
         <DataTable
-          title="Latest Wastes"
+          title={t('reportsScreens.inventoryDash.latestWastes')}
           icon={Trash2}
           color="danger"
           columns={[
             {key: 'invoice', label: t('columns.invoice')},
             {key: 'date', label: t('columns.date')},
-            {key: 'purchase', label: 'From Purchase'},
-            {key: 'issue', label: 'From Issue'},
+            {key: 'purchase', label: t('reportsScreens.inventoryDash.fromPurchase')},
+            {key: 'issue', label: t('reportsScreens.inventoryDash.fromIssue')},
             {key: 'createdBy', label: t('columns.createdBy')},
             {key: 'items', label: t('columns.items')},
             {key: 'total', label: t('columns.totalQty'), className: 'text-right font-semibold'},

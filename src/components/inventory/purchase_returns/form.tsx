@@ -573,7 +573,7 @@ export const InventoryPurchaseReturnForm = ({open, onClose, data}: Props) => {
 
           <div className="flex gap-3">
             <div className="flex-1">
-              <label>Documents</label>
+              <label>{t('forms.documents')}</label>
               <input
                 type="file"
                 multiple
@@ -600,7 +600,7 @@ export const InventoryPurchaseReturnForm = ({open, onClose, data}: Props) => {
                   purchase_item_id: null,
                 })}
               >
-                Add item
+                {t('buttons.addItem')}
               </Button>
               <InputError error={_.get(errors, ["items", "message"])}/>
             </div>
@@ -616,7 +616,7 @@ export const InventoryPurchaseReturnForm = ({open, onClose, data}: Props) => {
                   <input type="hidden" {...register(`items.${index}.purchase_item_id` as const)} />
                   <div className="flex gap-3">
                     <div className="flex-1">
-                      <label>Store</label>
+                      <label>{t('columns.store')}</label>
                       <Controller
                         name={`items.${index}.store`}
                         control={control}
@@ -671,7 +671,7 @@ export const InventoryPurchaseReturnForm = ({open, onClose, data}: Props) => {
                       />
                     </div>
                     <div className="flex-1">
-                      <label>Supplier</label>
+                      <label>{t('columns.suppliers')}</label>
                       <Controller
                         name={`items.${index}.supplier`}
                         control={control}
