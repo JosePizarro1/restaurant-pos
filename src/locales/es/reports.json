@@ -488,5 +488,258 @@
       "store": "Incluir solo sesiones de buffet cerradas en este almacén. Dejar vacío para todos los almacenes.",
       "sessionType": "Incluir solo sesiones de este período de comida. Dejar vacío para todos los tipos."
     }
+  },
+  "reportsScreens": {
+    "mergeOrders": {
+      "mergedAt": "Combinado el",
+      "mergedBy": "Combinado por",
+      "newOrder": "Nuevo pedido",
+      "oldOrders": "Pedidos anteriores",
+      "noMergeEvents": "Sin eventos de combinación para el rango seleccionado.",
+      "totalMergeEvents": "Total de eventos de combinación:"
+    },
+    "splitOrders": {
+      "createdAt": "Creado el",
+      "splitNumber": "División #",
+      "noSplitOrders": "Sin pedidos divididos para el rango seleccionado.",
+      "table": "Mesa"
+    },
+    "orderFinance": {
+      "createdAt": "Creado el",
+      "noRowsFound": "No se encontraron registros para el rango seleccionado."
+    },
+    "orderLifecycle": {
+      "noEventsFound": "No se encontraron eventos del ciclo de vida para este pedido.",
+      "status": "Estado"
+    },
+    "voids": {
+      "voidsByReason": "Anulaciones por motivo",
+      "noVoidsByReason": "Sin anulaciones por motivo",
+      "voidsByManagers": "Anulaciones por administrador",
+      "manager": "Administrador",
+      "noVoidsByManager": "Sin anulaciones por administrador",
+      "voidsByMenuItems": "Anulaciones por artículo del menú",
+      "menuItem": "Artículo del menú",
+      "noVoidsByMenuItem": "Sin anulaciones por artículo",
+      "noVoidsFound": "No se encontraron anulaciones para los filtros seleccionados",
+      "noModifiers": "Sin modificadores"
+    },
+    "labor": {
+      "scheduledVsActual": {
+        "date": "Fecha",
+        "scheduledHrs": "Horas programadas",
+        "actualHrs": "Horas reales",
+        "variance": "Variación",
+        "scheduledCost": "Costo programado",
+        "actualCost": "Costo real",
+        "costVariance": "Var. costo",
+        "noScheduleVarianceData": "Sin datos de variación de horario"
+      },
+      "payrollSummary": {
+        "employees": "Empleados",
+        "grossPay": "Pago bruto",
+        "netPay": "Pago neto",
+        "otHours": "Horas extras",
+        "regularHrs": "Horas regulares",
+        "otHrs": "Horas extras",
+        "gross": "Bruto",
+        "deductions": "Deducciones",
+        "net": "Neto",
+        "noPayrollSnapshots": "Sin registros de nómina"
+      },
+      "attendance": {
+        "scheduled": "Programado",
+        "worked": "Trabajado",
+        "late": "Tardanza",
+        "absent": "Falta",
+        "onTime": "A tiempo",
+        "ratePercent": "% Tasa",
+        "noAttendanceData": "Sin datos de asistencia"
+      },
+      "overtime": {
+        "department": "Departamento",
+        "regular": "Regular",
+        "ot": "Extras",
+        "double": "Doble",
+        "otPay": "Pago extras",
+        "noOvertimeRecords": "Sin registros de horas extras"
+      },
+      "dailyCost": {
+        "totalCost": "Costo total",
+        "totalHours": "Horas totales",
+        "overtimeHours": "Horas extras",
+        "date": "Fecha",
+        "hours": "Horas",
+        "otHours": "Horas extras",
+        "employees": "Empleados",
+        "cost": "Costo"
+      },
+      "dashboard": {
+        "noTrendData": "Sin datos de tendencia"
+      }
+    },
+    "tips": {
+      "allShifts": "Todos los turnos",
+      "totalTips": "Total de propinas",
+      "savedDistributions": "Distribuciones guardadas",
+      "noTipsFound": "No se encontraron propinas para los filtros seleccionados."
+    },
+    "expense": {
+      "totalExpenses": "Total de gastos",
+      "noExpensesFound": "No se encontraron gastos para el rango seleccionado."
+    },
+    "activity": {
+      "role": "Rol",
+      "shift": "Turno",
+      "auth": "Autenticación",
+      "manager": "Administrador",
+      "managerRole": "Rol de Administrador",
+      "payload": "Datos",
+      "noActivityLogs": "Sin registros de actividad para el rango seleccionado."
+    },
+    "product": {
+      "hourly": {
+        "taxesDiscountsWarning": "Este informe no incluye impuestos, descuentos, recargos por servicio, extras ni propinas",
+        "menuItem": "Artículo del menú",
+        "totalQty": "Cant. total",
+        "subtotal": "Subtotal",
+        "noDataAvailable": "Sin datos disponibles para los filtros seleccionados"
+      },
+      "mixSummary": {
+        "taxesDiscountsWarning": "Este informe no incluye impuestos, descuentos, recargos por servicio, extras ni propinas",
+        "noDataAvailable": "Sin datos disponibles para los filtros seleccionados"
+      },
+      "mixWeekly": {
+        "noDataAvailable": "Sin datos disponibles para los filtros seleccionados"
+      }
+    },
+    "salesAdvanced": {
+      "saleNoTax": "Venta sin impuestos",
+      "taxes": "Impuestos",
+      "tip": "Propina",
+      "serviceCharges": "Recargos por servicio",
+      "paymentBreakdown": "Desglose de pago",
+      "notes": "Notas",
+      "noOrdersFound": "No se encontraron pedidos para los filtros seleccionados."
+    },
+    "salesHourlyLabour": {
+      "failedToFetchData": "Error al obtener datos",
+      "noDataAvailable": "Sin datos disponibles para el rango de fechas seleccionado",
+      "error": "Error: {{error}}"
+    },
+    "salesHourlyLabourWeekly": {
+      "noDataAvailable": "Sin datos disponibles para la semana seleccionada."
+    },
+    "consumption": {
+      "noDataFound": "No se encontraron datos de consumo para los filtros seleccionados"
+    },
+    "issueReport": {
+      "noDataFound": "No se encontraron salidas/vales para los filtros seleccionados"
+    },
+    "purchaseReport": {
+      "noDataFound": "No se encontraron compras para los filtros seleccionados"
+    },
+    "serverSales": {
+      "noCategoryData": "Sin datos de categoría para este mozo/atendedor."
+    },
+    "salesDash": {
+      "revenueOverTime": "Ingresos a lo largo del tiempo",
+      "orderVolumeByHour": "Volumen de pedidos por hora",
+      "salesByDayPart": "Ventas por turno / momento del día",
+      "salesByCategory": "Ventas por categoría",
+      "noDataAvailable": "Sin datos disponibles",
+      "noActivityFound": "Sin actividad encontrada",
+      "netSale": "Venta neta",
+      "totalRevenue": "Ingresos totales",
+      "grandTotal": "Total general",
+      "serviceCharge": "Cargo por servicio",
+      "totalOrder": "Total de pedidos",
+      "totalCover": "Total de cubiertos",
+      "avgOrder": "Promedio por pedido",
+      "avgCover": "Promedio por cubierto",
+      "refundOrder": "Pedidos reembolsados",
+      "lateOrders": "Pedidos atrasados",
+      "topSellingItems": "Artículos más vendidos",
+      "excludeDeletedItems": "Excluir artículos eliminados/reembolsados/suspendidos",
+      "quantity": "Cantidad",
+      "topCashiers": "Principales cajeros",
+      "byTotalRevenue": "Por ingresos totales",
+      "orders": "Pedidos",
+      "topTables": "Mesas más activas",
+      "topOrderTypes": "Tipos de pedido principales",
+      "paymentMethods": "Medios de pago",
+      "transactions": "Transacciones",
+      "deliveryTabs": "Pestañas de entrega"
+    },
+    "inventoryDash": {
+      "noRecordsFound": "No se encontraron registros",
+      "totalPurchases": "Total de compras",
+      "purchaseReturns": "Devoluciones de compras",
+      "totalIssues": "Total de salidas",
+      "issueReturns": "Devoluciones de salidas",
+      "wastes": "Desperdicios / Mermas",
+      "noStockDataForStore": "Sin datos de stock para este almacén",
+      "noStoreStockData": "Sin datos de stock de almacén disponibles",
+      "latestPurchases": "Últimas compras",
+      "latestPurchaseReturns": "Últimas devoluciones de compras",
+      "latestIssues": "Últimas salidas",
+      "latestIssueReturns": "Últimas devoluciones de salidas",
+      "latestWastes": "Últimas mermas",
+      "fromPurchase": "De compra",
+      "fromIssue": "De salida",
+      "storeTabs": "Pestañas de almacén"
+    },
+    "cashClosing": {
+      "noDataFound": "No se encontró cierre de caja para la fecha seleccionada.",
+      "openingBalance": "Monto de apertura",
+      "totalCash": "Total en efectivo",
+      "otherPayments": "Otros medios de pago",
+      "window": "Ventana del ciclo",
+      "createdAt": "Fecha / hora de apertura",
+      "closedAt": "Fecha / hora de cierre",
+      "notes": "Notas / Observaciones",
+      "terminalCash": "Efectivo por terminal",
+      "terminal": "Terminal",
+      "noTerminalCashData": "Sin datos de efectivo por terminal",
+      "paymentSummary": "Resumen por medio de pago",
+      "paymentType": "Medio de pago",
+      "noPaymentSummaryData": "Sin datos en el resumen de pago",
+      "unknown": "Desconocido",
+      "noExpenseRecords": "Sin registro de gastos",
+      "totalExpenses": "Total de gastos"
+    },
+    "saleVsConsumption": {
+      "noDataAvailable": "Sin datos disponibles",
+      "title": "Venta vs Consumo",
+      "metric": "Métrica",
+      "saleTotal": "Total de venta",
+      "profitPercent": "Porcentaje de ganancia %",
+      "saleVsInventory": "Venta vs Inventario (Salidas)",
+      "saleVsPurchase": "Venta vs Compras"
+    },
+    "salesSummary2": {
+      "net": "= Neto",
+      "amountCollected": "Monto cobrado",
+      "refunds": "+ Reembolsos",
+      "discounts": "+ Descuentos",
+      "coupons": "+ Cupones",
+      "gross": "= Bruto",
+      "totalDeletion": "Total eliminados",
+      "outstandingChecks": "= Cuentas pendientes",
+      "saleByOrderType": "Ventas por tipo de pedido",
+      "salePriceNoTax": "Precio de venta sin impuestos",
+      "taxes": "Impuestos",
+      "serviceCharges": "Cargos por servicio",
+      "percentOfTotal": "% del Total",
+      "turnTime": "Tiempo de rotación (min)",
+      "noOrderTypeData": "Sin datos de tipos de pedido disponibles",
+      "saleByDayPart": "Ventas por momento del día",
+      "noCategoriesData": "Sin datos de categorías",
+      "rate": "Tasa / Tarifa",
+      "qty": "Cant.",
+      "noUserDiscountsData": "Sin datos de descuentos de usuario",
+      "paymentTypes": "Tipos de pago",
+      "noPaymentTypesData": "Sin datos de tipos de pago"
+    }
   }
 }

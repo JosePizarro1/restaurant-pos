@@ -98,7 +98,7 @@ INSERT [
 -- TABLE DATA: order_type
 -- ------------------------------
 
-INSERT [ { id: order_type:asv1e0weopsi8e3yhbh6, name: 'Para Llevar', priority: 2 }, { allow_service_charges: true, id: order_type:c1akh3xwlhn8sgom2rlc, name: 'En Mesa', priority: 1 }, { id: order_type:qesdqe9t1eqzdczed590, name: 'Delivery', priority: 3 } ];
+INSERT [ { id: order_type:asv1e0weopsi8e3yhbh6, name: 'Para Llevar', priority: 2 }, { allow_service_charges: false, id: order_type:c1akh3xwlhn8sgom2rlc, name: 'En Mesa', priority: 1 }, { id: order_type:qesdqe9t1eqzdczed590, name: 'Delivery', priority: 3 } ];
 
 
 -- ------------------------------

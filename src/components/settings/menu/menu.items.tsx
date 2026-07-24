@@ -219,7 +219,7 @@ export const MenuItems = ({
         let basePrice = existingItem?.base_price;
         if (!basePrice && taxMode === 'inclusive' && taxes && taxes.length > 0) {
           const taxObjects = existingItem?.taxes || [];
-          basePrice = calculateInclusiveBasePrice(price, taxObjects);
+          basePrice = Math.round(calculateInclusiveBasePrice(price, taxObjects) * 100) / 100;
         }
         if (!basePrice) {
           basePrice = price;
@@ -334,7 +334,7 @@ export const MenuItems = ({
       }
 
       if (bulkSettings.tax_mode === 'inclusive' && taxObjects.length > 0) {
-        setValue(`items.${index}.base_price`, calculateInclusiveBasePrice(price, taxObjects), {
+        setValue(`items.${index}.base_price`, Math.round(calculateInclusiveBasePrice(price, taxObjects) * 100) / 100, {
           shouldDirty: true,
           shouldValidate: true,
         });

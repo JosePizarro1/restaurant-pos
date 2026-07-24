@@ -1,4 +1,4 @@
-import {Order as OrderModel} from "@/api/model/order.ts";
+import {Order as OrderModel, OrderStatus} from "@/api/model/order.ts";
 import {MenuItem} from "@/api/model/cart_item.ts";
 import React, {CSSProperties, useMemo} from "react";
 import {calculateOrderExtrasTotal, calculateOrderTotal, calculateOrderTotalsPreview} from "@/lib/cart.ts";
@@ -48,6 +48,21 @@ export const OrderTotals = ({order, cart, className}: Props) => {
       return calculateOrderTotalsPreview(order, cart);
     }
 
+    const isSpilt = order.status === OrderStatus['Spilt'];
+    const filteredCount = getOrderFilteredItems(order).length;
+
+    if (isSpilt || filteredCount === 0) {
+      return {
+        itemsTotal: 0,
+        itemCount: 0,
+        taxAmount: 0,
+        serviceChargeAmount: 0,
+        discountAmount: 0,
+        tipAmount: 0,
+        total: 0,
+      };
+    }
+
     const itemsTotal = calculateOrderTotal(order);
     const extrasTotal = calculateOrderExtrasTotal(order);
     const taxAmount = getOrderTaxAmount(order);
@@ -55,7 +70,7 @@ export const OrderTotals = ({order, cart, className}: Props) => {
 
     return {
       itemsTotal,
-      itemCount: getOrderFilteredItems(order).length,
+      itemCount: filteredCount,
       taxAmount,
       serviceChargeAmount: Number(order?.service_charge_amount ?? 0),
       discountAmount: Number(order?.discount_amount ?? 0),
@@ -65,7 +80,7 @@ export const OrderTotals = ({order, cart, className}: Props) => {
   }, [order, cart]);
 
   const taxBreakdown = useMemo(() => {
-    if (cart) {
+    if (cart || order.status === OrderStatus['Spilt'] || getOrderFilteredItems(order).length === 0) {
       return [];
     }
     return getOrderTaxBreakdown(order);

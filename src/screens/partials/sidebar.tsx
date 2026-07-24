@@ -43,6 +43,7 @@ import { getUserModules } from "@/lib/access.rules.ts";
 import { useSecurity } from "@/hooks/useSecurity.ts";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { useTranslation } from "react-i18next";
+import logoWarike from "@/assets/images/logo.png";
 
 export const Sidebar = () => {
   const [page, setPage] = useAtom(appPage);
@@ -75,7 +76,8 @@ export const Sidebar = () => {
       ...prev,
       page: 'Login',
       locked: true,
-      lockedBy: prev.user
+      lockedBy: page.user,
+      user: undefined
     }));
 
     navigation(LOGIN);
@@ -109,7 +111,10 @@ export const Sidebar = () => {
   return (
     <div className="flex flex-col justify-between h-screen items-center sidebar border border-y-0 border-white bg-white/50 backdrop-blur">
       <div className="w-full">
-        <ScrollContainer className="h-[calc(100vh_-_150px)]" hideScrollbars={false}>
+        <div className="p-2 flex flex-col items-center border-b border-neutral-200/80 mb-1">
+          <img src={logoWarike} alt="El Warike Arequipeño" className="w-12 h-12 object-contain" />
+        </div>
+        <ScrollContainer className="h-[calc(100vh_-_210px)]" hideScrollbars={false}>
           <div className="p-2 flex flex-col">
             {sidebarItems.map(item => (
               <button

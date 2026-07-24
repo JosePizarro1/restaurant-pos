@@ -141,9 +141,7 @@ export const Input = forwardRef((props: InputProps, ref: Ref<any>) => {
           defaultValue={defaultValue as any}
           {...(enableKeyboard && page.touch
             ? { value: keyboardValue }
-            : resolvedValue !== undefined
-              ? { value: resolvedValue as any }
-              : {})}
+            : { value: resolvedValue ?? '' })}
           onChange={enableKeyboard && page.touch ? undefined : onChange}
           autoComplete="off"
           className={
@@ -194,7 +192,7 @@ export const Input = forwardRef((props: InputProps, ref: Ref<any>) => {
           name={name}
           defaultValue={defaultValue}
           {...inputProps}
-          value={enableKeyboard && page.touch ? keyboardValue : resolvedValue}
+          value={enableKeyboard && page.touch ? keyboardValue : (resolvedValue ?? '')}
           onChange={enableKeyboard && page.touch ? undefined : onChange}
           onFocus={onFocus}
           onMouseDown={enableKeyboard && page.touch ? handleMouseDownOpen : undefined}

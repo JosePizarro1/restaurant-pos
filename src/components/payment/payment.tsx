@@ -148,10 +148,16 @@ export const Payment = () => {
         continue;
       }
 
+      const dishId = item.dish?.id ? item.dish.id.toString() : (typeof item.dish === 'string' ? item.dish : null);
+      if (!dishId) {
+        console.error('Cannot create order item: dish or dish.id is null/undefined', item);
+        continue;
+      }
+
       const pricing = buildOrderItemPayload(item);
       const itemData: any = {
         tax: pricing.tax,
-        item: new StringRecordId(item.dish.id.toString()),
+        item: toRecordId(dishId),
         price: pricing.price,
         quantity: item.quantity,
         position: 0,
@@ -180,16 +186,19 @@ export const Payment = () => {
       }
 
       const record = await db.create(Tables.order_items, itemData);
-      items.push(record[0].id);
-      newItemIds.push(record[0].id);
+      const createdItemRef = record?.[0]?.id;
+      if (createdItemRef) {
+        items.push(createdItemRef);
+        newItemIds.push(createdItemRef);
 
-      // Held items stay off kitchen until Fire; route everything else now.
-      if (!item.isHold) {
-        await createStageRows(db, {
-          orderItem: record[0],
-          dish: item.dish,
-          kitchenItems,
-        });
+        // Held items stay off kitchen until Fire; route everything else now.
+        if (!item.isHold && item.dish) {
+          await createStageRows(db, {
+            orderItem: record[0],
+            dish: item.dish,
+            kitchenItems,
+          });
+        }
       }
     }
 
@@ -236,14 +245,16 @@ export const Payment = () => {
         {key: "service_charges"}
       );
       const serviceChargeSetting = serviceChargeSettingResult.length > 0 ? serviceChargeSettingResult?.[0]?.values : null;
-      const defaultTypeRaw = serviceChargeSetting?.type?.value ?? serviceChargeSetting?.type;
-      const defaultValueRaw = serviceChargeSetting?.value?.value ?? serviceChargeSetting?.value;
-      const normalizedType = String(defaultTypeRaw || DiscountType.Percent);
-      const normalizedValue = Number(defaultValueRaw || 0);
+      if (serviceChargeSetting && Number(serviceChargeSetting?.value ?? 0) > 0) {
+        const defaultTypeRaw = serviceChargeSetting?.type?.value ?? serviceChargeSetting?.type;
+        const defaultValueRaw = serviceChargeSetting?.value?.value ?? serviceChargeSetting?.value;
+        const normalizedType = String(defaultTypeRaw || DiscountType.Percent);
+        const normalizedValue = Number(defaultValueRaw || 0);
 
-      data.service_charge = normalizedValue;
-      data.service_charge_type = normalizedType;
-      data.service_charge_amount = normalizedType === DiscountType.Fixed ? normalizedValue : (total * normalizedValue / 100);
+        data.service_charge = normalizedValue;
+        data.service_charge_type = normalizedType;
+        data.service_charge_amount = normalizedType === DiscountType.Fixed ? normalizedValue : (total * normalizedValue / 100);
+      }
     }
 
     if (isNewOrder) {

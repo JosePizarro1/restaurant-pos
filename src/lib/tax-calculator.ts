@@ -87,9 +87,7 @@ export const calculateInclusiveBasePrice = (
 
   const total_tax_rate = validTaxes.reduce((sum, tax) => sum + (tax.rate || 0), 0);
   const divisor = 1 + total_tax_rate / 100;
-  const base_price = display_price / divisor;
-
-  return Math.round(base_price * 100) / 100;
+  return display_price / divisor;
 };
 
 export const calculateDisplayPrice = (

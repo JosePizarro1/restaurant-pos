@@ -117,8 +117,16 @@ export const createStageRows = async (
   }
 ): Promise<void> => {
   const { orderItem, dish, kitchenItems } = params;
+  if (!orderItem || !orderItem.id || !dish) {
+    console.warn('createStageRows skipped due to missing orderItem or dish', params);
+    return;
+  }
   const orderItemRef = toRecordId(orderItem.id.toString());
-  const dishId = dish.id.toString();
+  const dishId = dish.id ? dish.id.toString() : (typeof dish === 'string' ? dish : null);
+  if (!dishId) {
+    console.warn('createStageRows skipped: invalid dishId', dish);
+    return;
+  }
 
   const stages = await resolveStages(db, dishId);
 

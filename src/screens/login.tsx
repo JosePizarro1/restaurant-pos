@@ -20,6 +20,7 @@ import { clockIn as laborClockIn } from "@/lib/labor-engine/attendance/attendanc
 import { ensureEmployeeForUser } from "@/lib/labor-engine/employee.resolver.ts";
 import { useTranslation } from "react-i18next";
 import i18n from "@/lib/i18n.ts";
+import logoWarike from "@/assets/images/logo.png";
 
 export const Login = () => {
   const db = useDB();
@@ -98,8 +99,8 @@ export const Login = () => {
           setPendingUser(normalizedUser);
           setShowClockInModal(true);
         } else {
-          // Active time entry exists, proceed with login
-          allowLogin(normalizedUser);
+          // Has active time entry, complete login directly
+          completeLogin(normalizedUser);
         }
       }else{
         denyLogin();
@@ -107,19 +108,14 @@ export const Login = () => {
     }
   }
 
-  const allowLogin = (user: User) => {
+  const completeLogin = (user: User) => {
     setPage(prev => ({
       ...prev,
       page: 'Menu',
+      user,
       locked: false,
-      lockedBy: undefined,
-      user: user
+      lockedBy: undefined
     }));
-
-    setCode('');
-    setUsername('');
-    setPassword('');
-    setShowClockInModal(false);
     setPendingUser(null);
 
     // redirect to menu
@@ -139,7 +135,7 @@ export const Login = () => {
       });
 
       toast.success(i18n.t('auth:clockIn.success'));
-      allowLogin(pendingUser);
+      completeLogin(pendingUser);
     } catch (error) {
       toast.error(i18n.t('auth:clockIn.failed'));
       console.error(error);
@@ -174,8 +170,12 @@ export const Login = () => {
 
   return (
     <div className="relative">
-      <div className="bg-neutral-900 flex justify-center items-center h-screen flex-col gap-8">
-        <h4 className="text-4xl text-neutral-100">{t('login.title')}</h4>
+      <div className="bg-neutral-900 flex justify-center items-center min-h-screen flex-col gap-6 py-8 overflow-y-auto">
+        <div className="flex flex-col items-center gap-2">
+          <img src={logoWarike} alt="El Warike Arequipeño" className="w-36 h-36 object-contain drop-shadow-xl" />
+          <h1 className="text-3xl font-extrabold text-white tracking-wide text-center drop-shadow">El Warike Arequipeño</h1>
+          <p className="text-sm text-neutral-300 font-medium tracking-wide">Comida Típica Arequipeña</p>
+        </div>
         <div className="flex gap-3">
           <button
             className={cn(

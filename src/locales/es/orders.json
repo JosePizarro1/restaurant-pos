@@ -70,6 +70,7 @@
     "printFinalBillCopy": "Imprimir copia de factura final",
     "openCashDrawer": "Abrir cajón de efectivo",
     "tempBill": "Factura temporal",
+    "previewTempBill": "Previsualizar pre-cuenta",
     "payNow": "Pagar ahora"
   },
   "cancel": {
@@ -107,12 +108,12 @@
     "failed": "Error al reembolsar el pedido"
   },
   "voidReasons": {
-    "fohNotMade": "FOH no preparado",
-    "bohNotMade": "BOH no preparado",
-    "guestNotMade": "Invitado no preparado",
-    "fohMade": "FOH preparado",
-    "bohMade": "BOH preparado",
-    "guestMade": "Invitado preparado",
+    "fohNotMade": "Error de Mozo (Sin cocinar)",
+    "bohNotMade": "Problema de Cocina (Sin cocinar)",
+    "guestNotMade": "Cliente canceló (Sin cocinar)",
+    "fohMade": "Error de Mozo (Comida lista - Merma)",
+    "bohMade": "Problema de Cocina (Comida lista - Merma)",
+    "guestMade": "Cliente canceló (Comida lista - Merma)",
     "punchByMistake": "Registrado por error",
     "testing": "Prueba"
   },

@@ -148,7 +148,7 @@ export const CartActions = () => {
       );
       const kitchenRowCount = Number(countResult?.[0]?.count ?? 0);
 
-      if (kitchenRowCount === 0) {
+      if (kitchenRowCount === 0 && item.dish) {
         await createStageRows(db, {
           orderItem: {
             id: orderItemRef,

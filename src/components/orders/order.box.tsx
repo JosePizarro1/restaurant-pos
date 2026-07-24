@@ -13,6 +13,7 @@ import {
   faCodeBranch,
   faCreditCard,
   faEllipsisV,
+  faEye,
   faMoneyBillTransfer,
   faObjectGroup,
   faPrint
@@ -23,6 +24,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {dispatchPrint} from "@/lib/print.service";
 import {PRINT_TYPE} from "@/lib/print.registry.tsx";
 import {OrderTotals} from "@/components/orders/order.totals.tsx";
+import {OrderReceiptModal} from "@/components/orders/order.receipt.modal.tsx";
 import {SplitBySeats} from "@/components/orders/split/split.seats.tsx";
 import {SplitItems} from "@/components/orders/split/split.items.tsx";
 import {SplitAmount} from "@/components/orders/split/split.amount.tsx";
@@ -60,6 +62,7 @@ export const OrderBox = ({
   const [splitByAmount, setSplitByAmount] = useState(false);
   const [cancelOrderOpen, setCancelOrderOpen] = useState(false);
   const [refundOrderOpen, setRefundOrderOpen] = useState(false);
+  const [previewModalOpen, setPreviewModalOpen] = useState(false);
 
   const hasSeats = useMemo(() => {
     const items = getOrderFilteredItems(order).filter((item) => item.seat !== undefined);
@@ -134,6 +137,10 @@ export const OrderBox = ({
                 btnFlat={true}
                 className="flex-1"
                 onAction={(key) => {
+                  if (key === 'preview_temp_bill') {
+                    setPreviewModalOpen(true);
+                  }
+
                   if (key === 'temp_bill') {
                     protectAction(() => {
                       printTempBill();
@@ -261,6 +268,9 @@ export const OrderBox = ({
                                   className="min-w-[50px]">
                       <FontAwesomeIcon icon={faCodeBranch}/> {t('actions.splitByAmount')}
                     </DropdownItem>
+                    <DropdownItem isDisabled={mutationsBlocked} id="preview_temp_bill" key="preview_temp_bill" className="min-w-[50px]">
+                      <FontAwesomeIcon icon={faEye}/> {t('actions.previewTempBill')}
+                    </DropdownItem>
                     <DropdownSeparator/>
                     <DropdownItem isDisabled={mutationsBlocked} id="merge" key="merge" className="min-w-[50px]">
                       <FontAwesomeIcon icon={faObjectGroup}/> {t('actions.mergeOrders')}
@@ -282,6 +292,7 @@ export const OrderBox = ({
               </Dropdown>
               {order.status === OrderStatus["In Progress"] && (
                 <>
+                  <Button onClick={() => setPreviewModalOpen(true)} variant="primary" flat size="lg" className="flex-1" icon={faEye}></Button>
                   <Button onClick={() => {
                     protectAction(() => {
                       printTempBill();
@@ -349,6 +360,25 @@ export const OrderBox = ({
           onClose={() => {
             setRefundOrderOpen(false)
             onAction && onAction();
+          }}
+        />
+      )}
+
+      {previewModalOpen && (
+        <OrderReceiptModal
+          open={previewModalOpen}
+          order={order}
+          onClose={() => setPreviewModalOpen(false)}
+          onPrintThermal={() => {
+            protectAction(() => {
+              printTempBill();
+            }, {
+              module: 'Print temp bill',
+              description: 'Print temp bill',
+              payload: {
+                order: order.id.toString()
+              }
+            });
           }}
         />
       )}

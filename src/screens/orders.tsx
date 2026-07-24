@@ -104,6 +104,8 @@ export const Orders = () => {
     });
     if (statusFilters.length > 0) {
       f.push(`(${statusFilters.join(' or ')})`);
+    } else {
+      f.push(`status != "${OrderStatus['Spilt']}"`);
     }
 
     selectedOrderFilters?.orderTypes?.forEach(order_type => {

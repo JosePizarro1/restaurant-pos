@@ -15,25 +15,27 @@ interface DateRangeProps {
 export function DateRange({
   startName = "start",
   endName = "end",
-  label = "Select a range",
+  label,
   isRequired = false,
 }: DateRangeProps) {
   const { t } = useTranslation('reports');
+  const displayLabel = label ?? t('filters.selectRange', 'Seleccionar un rango');
   const now = () => DateTime.now().setZone(getAppTimezone());
   const todayStart = now().startOf("day").toFormat(import.meta.env.VITE_DATE_TIME_FORMAT);
   const todayEnd = now().endOf("day").toFormat(import.meta.env.VITE_DATE_TIME_FORMAT);
-  const dates = {
-    "Today": `${todayStart}to${todayEnd}`,
-    "Yesterday": `${now().minus({'day': 1}).startOf("day").toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().minus({'day': 1}).endOf("day").toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}`,
-    "This week": `${now().startOf('week').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().endOf('week').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}`,
-    "Last week": `${now().minus({week: 1}).startOf('week').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().minus({week: 1}).endOf('week').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}`,
-    "This month": `${now().startOf('month').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().endOf('month').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}`,
-    "Last month": `${now().minus({month: 1}).startOf('month').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().minus({month: 1}).endOf('month').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}`,
-    "This year": `${now().startOf('year').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().endOf('year').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}`,
-    "Last year": `${now().minus({year: 1}).startOf('year').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().minus({year: 1}).endOf('year').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}`,
-    "All time": "to",
-    "Custom": "CUS"
-  }
+
+  const presets = [
+    { key: "Today", label: t('datePresets.today', 'Hoy'), value: `${todayStart}to${todayEnd}` },
+    { key: "Yesterday", label: t('datePresets.yesterday', 'Ayer'), value: `${now().minus({'day': 1}).startOf("day").toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().minus({'day': 1}).endOf("day").toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}` },
+    { key: "This week", label: t('datePresets.thisWeek', 'Esta semana'), value: `${now().startOf('week').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().endOf('week').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}` },
+    { key: "Last week", label: t('datePresets.lastWeek', 'Semana pasada'), value: `${now().minus({week: 1}).startOf('week').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().minus({week: 1}).endOf('week').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}` },
+    { key: "This month", label: t('datePresets.thisMonth', 'Este mes'), value: `${now().startOf('month').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().endOf('month').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}` },
+    { key: "Last month", label: t('datePresets.lastMonth', 'Mes pasado'), value: `${now().minus({month: 1}).startOf('month').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().minus({month: 1}).endOf('month').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}` },
+    { key: "This year", label: t('datePresets.thisYear', 'Este año'), value: `${now().startOf('year').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().endOf('year').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}` },
+    { key: "Last year", label: t('datePresets.lastYear', 'Año pasado'), value: `${now().minus({year: 1}).startOf('year').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}to${now().minus({year: 1}).endOf('year').toFormat(import.meta.env.VITE_DATE_TIME_FORMAT)}` },
+    { key: "All time", label: t('datePresets.allTime', 'Todo el historial'), value: "to" },
+    { key: "Custom", label: t('datePresets.custom', 'Personalizado'), value: "CUS" }
+  ];
 
   const [isCustom, setCustom] = useState(false);
   const [preset, setPreset] = useState([todayStart, todayEnd]);
@@ -41,7 +43,7 @@ export function DateRange({
 
   return (
     <div className="flex flex-col w-full">
-      <label htmlFor="date-preset">{label}</label>
+      <label htmlFor="date-preset">{displayLabel}</label>
       <select
         id="date-preset"
         onChange={(event) => {
@@ -55,8 +57,8 @@ export function DateRange({
         }}
         className="form-control self-center"
       >
-        {Object.keys(dates).map(item => (
-          <option key={item} value={dates[item]}>{item}</option>
+        {presets.map(item => (
+          <option key={item.key} value={item.value}>{item.label}</option>
         ))}
       </select>
       {!isCustom && (

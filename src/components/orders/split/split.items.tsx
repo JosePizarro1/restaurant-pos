@@ -235,10 +235,15 @@ export const SplitItems = ({
         }
       }
 
-      // // Mark original order as cancelled or completed
+      // Mark original order as split and reset amounts
       await db.merge(order.id, {
         status: OrderStatus['Spilt'],
         items: [], // items moved to new orders
+        tax_amount: 0,
+        service_charge_amount: 0,
+        discount_amount: 0,
+        tip_amount: 0,
+        extras: [],
         tags: [...(order.tags || []), OrderStatus['Spilt']]
       });
 

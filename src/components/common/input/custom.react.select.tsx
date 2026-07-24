@@ -111,10 +111,12 @@ export function ReactSelect<
       : defaultMenuPortalTarget;
 
   const BaseMenuPortal = componentsProp?.MenuPortal ?? selectComponents.MenuPortal;
+  const placeholder = props.placeholder ?? "Seleccionar...";
 
   return (
     <Select
       closeMenuOnSelect={!isMulti}
+      placeholder={placeholder}
       {...restProps}
       isMulti={isMulti}
       theme={themeConfig}

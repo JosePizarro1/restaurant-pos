@@ -5,5 +5,5 @@ export interface ShowInclusivePricesSettings {
 }
 
 export const DEFAULT_SHOW_INCLUSIVE_PRICES: ShowInclusivePricesSettings = {
-  enabled: false,
+  enabled: true,
 };

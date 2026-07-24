@@ -3,28 +3,29 @@ import {Order as OrderModel, ORDER_FETCHES, OrderStatus} from "@/api/model/order
 import {Tables} from "@/api/db/tables.ts";
 import {useCallback, useEffect, useMemo, useState} from "react";
 import {DateValue} from "react-aria-components";
-import {getLocalTimeZone, today} from "@internationalized/date";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowLeft, faArrowRight, faPrint, faSpinner} from "@fortawesome/free-solid-svg-icons";
-import {Calendar} from "@/components/common/antd/calendar.tsx";
-import {Button} from "@/components/common/input/button.tsx";
-import {DailySalesSummaryReport} from '@/components/summary/daily.sales.summary.report.tsx';
-import {useDB} from "@/api/db/db.ts";
-import {dispatchPrint} from "@/lib/print.service.ts";
-import {PRINT_TYPE} from "@/lib/print.registry.tsx";
-import {useAtom} from "jotai";
-import {appPage} from "@/store/jotai.ts";
-import {useQueryBuilder} from "@/api/db/query-builder.ts";
-import {getOrderFilteredItems} from "@/lib/order.ts";
-import {calculateOrderItemPrice} from "@/lib/cart.ts";
-import {getOrderTaxAmount} from "@/lib/tax-calculator.ts";
-import {TimeEntry} from "@/api/model/time_entry.ts";
-import {formatNumber, withCurrency} from "@/lib/utils.ts";
-import {toast} from "sonner";
+import { getLocalTimeZone, parseDate, today } from "@internationalized/date";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight, faPrint, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { Calendar } from "@/components/common/antd/calendar.tsx";
+import { Button } from "@/components/common/input/button.tsx";
+import { DailySalesSummaryReport } from '@/components/summary/daily.sales.summary.report.tsx';
+import { useDB } from "@/api/db/db.ts";
+import { dispatchPrint } from "@/lib/print.service.ts";
+import { PRINT_TYPE } from "@/lib/print.registry.tsx";
+import { useAtom } from "jotai";
+import { appPage } from "@/store/jotai.ts";
+import { useQueryBuilder } from "@/api/db/query-builder.ts";
+import { getOrderFilteredItems } from "@/lib/order.ts";
+import { calculateOrderItemPrice } from "@/lib/cart.ts";
+import { getOrderTaxAmount } from "@/lib/tax-calculator.ts";
+import { TimeEntry } from "@/api/model/time_entry.ts";
+import { formatNumber, withCurrency } from "@/lib/utils.ts";
+import { toast } from "sonner";
 import ScrollContainer from "react-indiana-drag-scroll";
-import {useSecurity} from "@/hooks/useSecurity.ts";
-import { toJsDate } from "@/lib/datetime.ts";
-import {useTranslation} from "react-i18next";
+import { useSecurity } from "@/hooks/useSecurity.ts";
+import { toJsDate, getAppTimezone } from "@/lib/datetime.ts";
+import { DateTime } from "luxon";
+import { useTranslation } from "react-i18next";
 
 const safeNumber = (value: unknown) => {
   const parsed = Number(value);
@@ -68,13 +69,23 @@ const formatDuration = (ms: number): string => {
   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 };
 
+const getInitialBusinessDate = (): DateValue => {
+  const tz = getAppTimezone();
+  const now = DateTime.now().setZone(tz);
+  if (now.hour < 6) {
+    const yesterday = now.minus({ days: 1 });
+    return parseDate(yesterday.toFormat("yyyy-MM-dd"));
+  }
+  return parseDate(now.toFormat("yyyy-MM-dd"));
+};
+
 export const Summary = () => {
   const {t} = useTranslation(["summary", "toast"]);
   const db = useDB();
   const [page] = useAtom(appPage);
   const {protectAction} = useSecurity();
 
-  const [date, setDate] = useState<DateValue>(today(getLocalTimeZone()));
+  const [date, setDate] = useState<DateValue>(() => getInitialBusinessDate());
   const [orders, setOrders] = useState<OrderModel[]>([]);
   const [isLoading, setLoading] = useState(true);
   const [isPrintingMix, setIsPrintingMix] = useState(false);
@@ -84,7 +95,13 @@ export const Summary = () => {
     const f = [`status = '${OrderStatus.Paid}'`];
 
     if (date) {
-      f.push(`(time::format(created_at, "%Y-%m-%d") = "${date?.toString()}")`);
+      const tz = getAppTimezone();
+      const dt = DateTime.fromISO(date.toString(), { zone: tz });
+      const startIso = dt.startOf("day").toISO();
+      const endIso = dt.endOf("day").toISO();
+      if (startIso && endIso) {
+        f.push(`created_at >= type::datetime('${startIso}') AND created_at <= type::datetime('${endIso}')`);
+      }
     }
 
     return f;
