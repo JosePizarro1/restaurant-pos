@@ -10,7 +10,7 @@ import { formatNumber, withCurrency } from "@/lib/utils.ts";
 import { DateTime } from "luxon";
 import { useTranslation } from "react-i18next";
 
-import { getOrderItemDisplayLineTotal } from "@/lib/order-item-display.ts";
+import { getOrderItemDisplayLineTotal, getOrderItemModifiersDetail } from "@/lib/order-item-display.ts";
 import { useShowInclusivePrices } from "@/hooks/useShowInclusivePrices.ts";
 
 interface Props {
@@ -100,15 +100,21 @@ export const OrderReceiptModal = ({ open, onClose, order, onPrintThermal }: Prop
                 {items.map((item: any, idx) => {
                   const lineTotal = getOrderItemDisplayLineTotal(item, showInclusive);
                   const dishName = item?.item?.name || item?.dish?.name || 'Plato';
-                  const modifiers = item?.modifiers || [];
+                  const modifiers = getOrderItemModifiersDetail(item, showInclusive);
                   return (
                     <tr key={idx} className="align-top">
                       <td className="py-1.5 font-bold">{item.quantity}</td>
                       <td className="py-1.5 pr-2">
                         <div>{dishName}</div>
-                        {modifiers.map((mod: any, mIdx: number) => (
-                          <div key={mIdx} className="text-[10px] text-neutral-500 pl-1">
-                            + {mod.modifier?.name || mod.name}
+                        {modifiers.map((mod, mIdx) => (
+                          <div
+                            key={mIdx}
+                            className="text-[10px] text-neutral-500"
+                            style={{ paddingLeft: `${Math.max(1, mod.depth) * 4}px` }}
+                          >
+                            + {mod.name}
+                            {mod.quantity > 1 ? ` (x${mod.quantity})` : ''}
+                            {mod.price > 0 ? ` (+${withCurrency(mod.price)})` : ''}
                           </div>
                         ))}
                       </td>

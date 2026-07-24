@@ -94,3 +94,36 @@ export const getOrderDisplayItemsTotal = (
     0,
   );
 };
+
+export interface OrderItemModifierDetail {
+  name: string;
+  quantity: number;
+  price: number;
+  depth: number;
+}
+
+export const getOrderItemModifiersDetail = (
+  item: any,
+  showInclusive = false,
+): OrderItemModifierDetail[] => {
+  const rows: OrderItemModifierDetail[] = [];
+
+  const walkGroups = (groups: any[] = [], depth = 1) => {
+    (groups || []).forEach(group => {
+      (group?.selectedModifiers ?? []).forEach((selected: any) => {
+        const name = selected?.dish?.name || selected?.name || selected?.modifier?.name || '';
+        if (name) {
+          const quantity = safeNumber(selected?.quantity || 1);
+          const rawPrice = safeNumber(selected?.price || 0);
+          const price = item ? getOrderItemModifierDisplayPrice(rawPrice, item, showInclusive) : rawPrice;
+          rows.push({ name, quantity, price, depth });
+        }
+        walkGroups(selected?.selectedGroups ?? [], depth + 1);
+      });
+    });
+  };
+
+  walkGroups(item?.modifiers ?? [], 1);
+  return rows;
+};
+
